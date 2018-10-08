@@ -5,7 +5,7 @@ return [
 
 //    'layoutPath'=>'',
     'params' => [
-        'adminEmail'=>'1225'
+        'session_life_time'=>24*60*60
     ],
 
 

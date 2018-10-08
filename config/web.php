@@ -12,6 +12,8 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'defaultRoute'=>'index/index',
+    'timeZone' => 'Asia/Shanghai',
+    'language'=>'zh-CN',
 //    'layoutPath'=>'..\views\layouts',
     'components' => [
         'request' => [
