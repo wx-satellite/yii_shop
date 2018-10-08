@@ -11,7 +11,6 @@
     <link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/admin/css/font-awesome.css" rel="stylesheet">
     <link href="/assets/admin/css/weather-icons.css" rel="stylesheet">
-
     <!--Beyond styles-->
     <link id="beyond-link" href="/assets/admin/css/beyond.css" rel="stylesheet" type="text/css">
     <link href="/assets/admin/css/demo.css" rel="stylesheet">
@@ -166,8 +165,6 @@
 <!--Basic Scripts-->
 <script src="/assets/admin/js/jquery_002.js"></script>
 <script src="/assets/admin/js/bootstrap.js"></script>
-<script src="/assets/admin/js/jquery.js"></script>
-<!--Beyond Scripts-->
 <script src="/assets/admin/js/beyond.js"></script>
 
 

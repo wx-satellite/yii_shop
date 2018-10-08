@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 class Admin extends ActiveRecord{
 
     public $remember_me;
+    public $repassword;
     public static function tableName()
     {
         return '{{%admin}}';
@@ -21,17 +22,22 @@ class Admin extends ActiveRecord{
             ['email','email','message'=>'邮箱格式不正确'],
 //            ['password','checkLength']
             ['password','string','min'=>6,'max'=>32],
-            ['password','checkPass'],
-            ['remember_me','boolean']
+            ['password','checkPass','on'=>['login']],
+            ['remember_me','boolean'],
+            ['repassword','required','message'=>'请重复密码'],
+            ['repassword','compare','compareAttribute'=>'password','message'=>'两次密码输入不一致']
         ];
     }
-//    public function scenarios()
-//    {
-//        return [
-//            'login'=>['email','password','remember_me']
-//        ];
-//    }
+    public function scenarios()
+    {
+        return [
+            'login'=>['email','password','remember_me'],
+            'seek'=>['email'],
+            'change_password'=>['password','repassword']
+        ];
+    }
 
+    //校验密码
     public function checkPass($attr,$params){
         if(!$this->hasErrors()){
             $admin=self::find()
@@ -61,13 +67,80 @@ class Admin extends ActiveRecord{
         self::updateAll(['last_login_time'=>date('Y-m-d H:i:s'),'loginip'=>ip2long(\Yii::$app->request->userIP)],
             'id=:id',[':id'=>$admin->id]
             );
+        return true;
     }
+    //根据邮箱登录
     public function loginByEmail($post){
+        $this->scenario='login';
         if($this->load($post) && $this->validate()){
             return true;
         }
         return false;
     }
+    //找回密码
+    public function seekPassword($post){
+        $this->scenario='seek';
+        if($this->load($post)&&$this->validate()){
+            $this->sendSeekPasswordEmail($post['Admin']['email']);
+        }
+        return false;
+    }
+
+    //发送重置密码邮件
+    protected function sendSeekPasswordEmail($email){
+        $token = $this->saveEmailToCache($email);
+        $mailer = \Yii::$app->mailer->compose('seekpassword', ['token' => $token]);
+        $mailer->setFrom("15658283276@163.com");
+        $mailer->setTo($email);
+        $mailer->setSubject("找回密码");
+        if ($mailer->send()) {
+            //  与 \Yii::$app->session->setFlash('Success','发送邮件成功') 等效
+            \Yii::$app->getSession()->setFlash('Success','发送邮件成功');
+            return true;
+        }
+        \Yii::$app->getSession()->setFlash('Error','发送邮件失败');
+        return false;
+    }
+
+    //将邮箱存入缓存
+    protected function saveEmailToCache($value){
+        //获取token
+        $key = $this->getToken($value);
+        $cache = \Yii::$app->cache;
+        //将token作为键，邮箱值作为值，存入缓存
+        $cache->set($key,$value,\Yii::$app->getModule('admin')->params['cache_expire_time']);
+        return $key;
+    }
+
+    protected function getToken($email){
+        $token = md5(md5($email).\Yii::$app->request->userIP).md5(time());
+        return $token;
+    }
+
+    //修改密码逻辑
+    public function changePassword($token,$post){
+        $this->scenario='change_password';
+        if($this->load($post) && $this->validate()){
+            $email = \Yii::$app->cache->get($token);
+            if(!$email){
+                \Yii::$app->getSession()->setFlash('Error','重置链接已经失效，请重新发送邮件');
+                return false;
+            }
+            self::updateAll(['password'=>md5($this->password)],'email=:email',[':email'=>$email]);
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
 //    public function checkLength($attr,$params){
 //        if(strlen($this->$attr)<6){
 //            $this->addError($attr,'密码不能少于6位');

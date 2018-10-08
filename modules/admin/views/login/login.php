@@ -47,7 +47,7 @@ use yii\helpers\Html;
                 <div class="checkbox">
                     <?php echo $form->field($model,'remember_me')->checkbox([
                         'template'=>'<label>{input}<span class="text">记住我</span></label><div class="loginbox-forgot" style="float: right">
-                        <a href="">忘记密码</a>
+                        <a href="?r=admin/password/seek-password">忘记密码</a>
                     </div>',
                     ]);?>
                 </div>
