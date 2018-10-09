@@ -17,9 +17,11 @@ class Admin extends ActiveRecord{
     public function rules()
     {
         return [
+            ['username','required','message'=>'请填写用户名'],
             ['email','required','message'=>'请填写邮箱'],
             ['password','required','message'=>'请填写密码'],
             ['email','email','message'=>'邮箱格式不正确'],
+            ['email','unique','on'=>'register','message'=>'该账号已经存在'],
 //            ['password','checkLength']
             ['password','string','min'=>6,'max'=>32],
             ['password','checkPass','on'=>['login']],
@@ -33,7 +35,8 @@ class Admin extends ActiveRecord{
         return [
             'login'=>['email','password','remember_me'],
             'seek'=>['email'],
-            'change_password'=>['password','repassword']
+            'change_password'=>['password','repassword'],
+            'register'=>['email','password','username']
         ];
     }
 
@@ -132,9 +135,32 @@ class Admin extends ActiveRecord{
         return false;
     }
 
+    //添加管理员
+    public function addManager($post){
+        $this->scenario='register';
+        if($this->load($post) && $this->validate()){
+            $this->password = md5($this->password);
+            //默认save会进行验证，由于我们在前面已经执行了$this->validate验证操作，因此不需要再次验证
+            if($this->save(false)){
+                \Yii::$app->getSession()->setFlash('Success','添加管理员成功');
+                return true;
+            }
+            \Yii::$app->getSession()->setFlash('Error','添加管理员失败');
+            return false;
+        }
+    }
 
-
-
+    //删除管理员
+    public function deleteAdminById($id){
+        //返回影响的记录条数
+        $res = self::updateAll(['status'=>-1],'id=:id',[':id'=>$id]);
+        if(!$res){
+            \Yii::$app->getSession()->setFlash('Error','记录不存在');
+            return false;
+        }
+        \Yii::$app->getSession()->setFlash('Success','删除管理员成功');
+        return true;
+    }
 
 
 

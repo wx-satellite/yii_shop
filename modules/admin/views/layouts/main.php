@@ -11,12 +11,14 @@
     <link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/admin/css/font-awesome.css" rel="stylesheet">
     <link href="/assets/admin/css/weather-icons.css" rel="stylesheet">
+
     <!--Beyond styles-->
     <link id="beyond-link" href="/assets/admin/css/beyond.css" rel="stylesheet" type="text/css">
     <link href="/assets/admin/css/demo.css" rel="stylesheet">
     <link href="/assets/admin/css/typicons.css" rel="stylesheet">
     <link href="/assets/admin/css/animate.css" rel="stylesheet">
-
+    <script src="/assets/admin/js/jquery_002.js"></script>
+    <script src="/assets/admin/js/bootstrap.js"></script>
 </head>
 <body>
 <!-- 头部 -->
@@ -27,7 +29,7 @@
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/assets/admin/images/logo.png" alt="">
+                        <img src="/assets/img/logo/logo.png" alt="">
                     </small>
                 </a>
             </div>
@@ -44,7 +46,7 @@
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
-                                    <img src="/assets/admin/images/adam-jansen.jpg">
+                                    <img src="/assets/admin/images/header.jpg">
                                 </div>
                                 <section>
                                     <h2><span class="profile"><span>admin</span></span></h2>
@@ -54,15 +56,15 @@
                             <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                 <li class="username"><a>David Stevenson</a></li>
                                 <li class="dropdown-footer">
-                                    <a href="<?php echo \yii\helpers\Url::to(['login/logout']); ?>">
+                                    <a href="/admin/user/logout.html">
                                         退出登录
                                     </a>
                                 </li>
-                                <li class="dropdown-footer">
-                                    <a href="/admin/user/changePwd.html">
-                                        修改密码
-                                    </a>
-                                </li>
+<!--                                <li class="dropdown-footer">-->
+<!--                                    <a href="/admin/user/changePwd.html">-->
+<!--                                        修改密码-->
+<!--                                    </a>-->
+<!--                                </li>-->
                             </ul>
                             <!--/Login Area Dropdown-->
                         </li>
@@ -77,99 +79,97 @@
         </div>
     </div>
 </div>
-<div class="page-sidebar" id="sidebar">
-    <!-- Page Sidebar Header-->
-    <div class="sidebar-header-wrapper">
-        <input class="searchinput" type="text">
-        <i class="searchicon fa fa-search"></i>
-        <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
-    </div>
-    <!-- /Page Sidebar Header -->
-    <!-- Sidebar Menu -->
-    <ul class="nav sidebar-menu">
-        <!--Dashboard-->
-        <li>
-            <a href="#" class="menu-dropdown">
-                <i class="menu-icon fa fa-user"></i>
-                <span class="menu-text">管理员</span>
-                <i class="menu-expand"></i>
-            </a>
-            <ul class="submenu">
-                <li>
-                    <a href="/admin/document/index.html">
-                                    <span class="menu-text">
-                                        管理列表                                    </span>
-                        <i class="menu-expand"></i>
-                    </a>
-                </li>
-            </ul>
-        </li>
 
-        <li>
-            <a href="#" class="menu-dropdown">
-                <i class="menu-icon fa fa-file-text"></i>
-                <span class="menu-text">文档</span>
-                <i class="menu-expand"></i>
-            </a>
-            <ul class="submenu">
-                <li>
-                    <a href="/admin/document/index.html">
-                                    <span class="menu-text">
-                                        文章列表                                    </span>
-                        <i class="menu-expand"></i>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="#" class="menu-dropdown">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">系统</span>
-                <i class="menu-expand"></i>
-            </a>
-            <ul class="submenu">
-                <li>
-                    <a href="/admin/document/index.html">
-                                    <span class="menu-text">
-                                        配置                                   </span>
-                        <i class="menu-expand"></i>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="http://www.chuanke.com/s2260700.html" class="menu-dropdown">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">Tp5视频教程</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-
-    </ul>
-    <!-- /Sidebar Menu -->
-</div>
+<!-- /头部 -->
 
 <div class="main-container container-fluid">
     <div class="page-container">
         <!-- Page Sidebar -->
-<?= $content ?>
-    </div>
-    <!-- /Page Body -->
-</div>
-<!-- /Page Content -->
+        <div class="page-sidebar" id="sidebar">
+            <!-- Page Sidebar Header-->
+            <div class="sidebar-header-wrapper">
+                <input class="searchinput" type="text">
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+            </div>
+            <!-- /Page Sidebar Header -->
+            <!-- Sidebar Menu -->
+            <ul class="nav sidebar-menu">
+                <!--Dashboard-->
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-user"></i>
+                        <span class="menu-text">管理员管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="<?php echo \yii\helpers\Url::to(['manager/list']);?>">
+                                    <span class="menu-text">
+                                        管理员列表                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-file-text"></i>
+                        <span class="menu-text">文档</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        文章列表                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-gear"></i>
+                        <span class="menu-text">系统</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        配置                                   </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="http://www.chuanke.com/s2260700.html" class="menu-dropdown">
+                        <i class="menu-icon fa fa-gear"></i>
+                        <span class="menu-text">Tp5视频教程</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- /Sidebar Menu -->
+        </div>
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <?php echo $content;?>
+    <!-- /Page Content -->
+</div>
 </div>
 
 <!--Basic Scripts-->
-<script src="/assets/admin/js/jquery_002.js"></script>
-<script src="/assets/admin/js/bootstrap.js"></script>
+
+<!--Beyond Scripts-->
 <script src="/assets/admin/js/beyond.js"></script>
 
 
 
 </body></html>
-
-
-
