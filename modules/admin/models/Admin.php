@@ -98,10 +98,10 @@ class Admin extends ActiveRecord{
         $mailer->setSubject("找回密码");
         if ($mailer->send()) {
             //  与 \Yii::$app->session->setFlash('Success','发送邮件成功') 等效
-            \Yii::$app->getSession()->setFlash('Success','发送邮件成功');
+            \Yii::$app->getSession()->setFlash('Success','重置密码邮件发送成功');
             return true;
         }
-        \Yii::$app->getSession()->setFlash('Error','发送邮件失败');
+        \Yii::$app->getSession()->setFlash('Error','重置密码邮件发送失败');
         return false;
     }
 
@@ -130,6 +130,8 @@ class Admin extends ActiveRecord{
                 return false;
             }
             self::updateAll(['password'=>md5($this->password)],'email=:email',[':email'=>$email]);
+            //删除缓存
+            \Yii::$app->cache->delete($token);
             return true;
         }
         return false;

@@ -1,104 +1,113 @@
 <?php
 
+
 namespace app\models;
-
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
-{
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
-
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+use yii\db\ActiveRecord;
 
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentity($id)
+class User extends ActiveRecord{
+
+    public $remember_me;
+    public $repassword;
+
+    public static function tableName()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+       return "{{%user}}";
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
+    public function rules()
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
+        return [
+            ['username','required','message'=>'请填写用户名'],
+            ['email','required','message'=>'请填写邮箱'],
+            ['password','required','message'=>'请填写密码'],
+            ['password','string','min'=>6],
+            ['repassword','required','message'=>'请重复密码'],
+            ['repassword','compare','compareAttribute'=>'password','message'=>'两次密码不一致'],
+            ['username','unique','message'=>'该用户名已经存在'],
+            ['email','unique','message'=>'该邮箱已经存在']
+        ];
+    }
+
+    public function scenarios()
+    {
+       return [
+           'register'=>['username','email','password','repassword']
+       ];
+    }
+
+    //根据邮箱激活用户
+    public function activeUser($token,$email){
+        if(!self::updateAll(['status'=>1],'email=:email',[':email'=>$email])){
+            \Yii::$app->getSession()->setFlash('Error','激活用户失败，请稍后再试');
+            return false;
+        }
+        \Yii::$app->getSession()->setFlash('Success','激活用户成功，赶紧登陆吧');
+        //删除缓存
+        \Yii::$app->cache->delete($token);
+        return true;
+    }
+
+    //用户注册
+    public function userRegister($post){
+        $this->scenario='register';
+        if($this->load($post) && $this->validate()){
+            if($this->save(false)){
+                //记录添加成功，发送邮件激活
+                return $this->sendActiveEmail('active',$this->email);
             }
         }
-
-        return null;
     }
 
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
+    protected function sendActiveEmail($compose,$email){
+        $key = $this->getToken($email);
+        if(\Yii::$app->cache->get($key)){
+            \Yii::$app->getSession()->setFlash('Error','激活邮件已经发送了，不能重复发送');
+            return true;
         }
-
-        return null;
+        return $this->sendEmail($compose,$email,$key);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
+    //这里需要注意：
+    //1.邮件发送成功之后再将token写入缓存，如果先写入缓存再发送邮件会出现bug
+    //2.邮件发送异常需要把用户信息删除，方便重新注册重新发送激活邮件
+    protected function sendEmail($compose,$email,$token){
+        $mailer = \Yii::$app->mailer->compose($compose,['token'=>$token]);
+        $mailer->setFrom('15658283276@163.com');
+        $mailer->setTo($email);
+        $mailer->setSubject('账号激活');
+        try{
+            if(!$mailer->send()){
+                \Yii::$app->getSession()->setFlash('Error','发送激活邮件失败，请重试');
+                //删除记录
+                self::deleteAll('email=:email',[':email'=>$email]);
+                return false;
+            }
+        }catch(\Exception $e){
+            \Yii::$app->getSession()->setFlash('Error','发送邮件异常，请稍后重试');
+            self::deleteAll('email=:email',[':email'=>$email]);
+            return false;
+        }
+        //将邮箱写入缓存，用于激活用户
+        $this->saveEmailToCache($token,$email);
+        //提示信息
+        \Yii::$app->getSession()->setFlash('Success','发送激活邮件成功，注意查收');
+        return true;
+
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthKey()
-    {
-        return $this->authKey;
+    //将邮箱存入缓存
+    protected function saveEmailToCache($key,$value){
+        $cache = \Yii::$app->cache;
+        //将token作为键，邮箱值作为值，存入缓存
+        $cache->set($key,$value,0);
+        return $key;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
+    protected function getToken($email){
+        $token = md5($email).md5(\Yii::$app->params['ak']);
+        return $token;
     }
 
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return $this->password === $password;
-    }
+
 }

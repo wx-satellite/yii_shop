@@ -99,7 +99,7 @@ $this->title='三斤宠物口粮';
                                 </li>
                                 <li><a href="about-us.html">关于我们</a></li>
                                 <li><a href="contact.html">联系我们</a></li>
-                                <li><a href="contact.html">登录</a></li>
+                                <li><a href="<?php echo \yii\helpers\Url::to(['login/login']);?>">登录</a></li>
                             </ul>
                         </nav>
                     </div>

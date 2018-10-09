@@ -2,7 +2,8 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-
+$secure = require __DIR__.'/secure.php';
+$params=array_merge($params,$secure);
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
