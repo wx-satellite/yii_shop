@@ -21,7 +21,7 @@ use yii\bootstrap\Alert;
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
                         <a class="active" data-toggle="tab" href="#lg1">
-                            <h4> 登录 </h4>
+                            <h4> 重置密码 </h4>
                         </a>
 
                     </div>
@@ -47,16 +47,11 @@ use yii\bootstrap\Alert;
                                     <?php $form=ActiveForm::begin([
                                         'fieldConfig'=>['template'=>'{input}<div style=\'color:red;margin-top:-20px;padding-bottom: 5px;\'>{error}</div>']
                                     ]);?>
-                                    <?php echo $form->field($model,'account')->textInput(['placeholder'=>'用户名或者邮箱']);?>
-                                    <?php echo $form->field($model,'password')->passwordInput(['placeholder'=>'密码']);?>
+                                    <?php echo $form->field($model,'password')->passwordInput(['placeholder'=>'新密码']);?>
+                                    <?php echo $form->field($model,'repassword')->passwordInput(['placeholder'=>'重复密码']);?>
                                     <div class="button-box">
-                                    <?php echo $form->field($model,'remember_me')->label('　记住我')->checkbox([
-                                        'template'=>'<div class="login-toggle-btn">{input}{label}<a href="/index.php?r=login/seek-password">忘记密码？</a>
-                                            </div>'
-                                    ]);?>
-                                        <?php echo Html::submitButton('登录');?>
-                                        <a style="color:grey;margin-left: 10px;" href="<?php echo \yii\helpers\Url::to(['login/register']);?>">还没有账号，去注册一个吧?</a>
-                                        </div>
+                                        <?php echo Html::submitButton('确认修改');?>
+                                    </div>
                                     <?php ActiveForm::end();?>
                                 </div>
                             </div>

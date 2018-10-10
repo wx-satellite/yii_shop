@@ -58,9 +58,9 @@ class Admin extends ActiveRecord{
 
     }
     protected function saveAdminInfoToSession($admin){
-        $lifetime=$this->remember_me?\Yii::$app->getModule('admin')->params['session_life_time']:0;
+        $lifetime=$this->remember_me?\Yii::$app->getModule('admin')->params['session_life_time']:null;
         $session=\Yii::$app->session;
-        session_set_cookie_params($lifetime);
+        setcookie(session_name(),session_id(),$lifetime?time()+$lifetime:$lifetime);
         $session['admin']=[
             'uid'=>$admin->id,
             'username'=>$admin->username
@@ -92,7 +92,7 @@ class Admin extends ActiveRecord{
     //发送重置密码邮件
     protected function sendSeekPasswordEmail($email){
         $token = $this->saveEmailToCache($email);
-        $mailer = \Yii::$app->mailer->compose('seekpassword', ['token' => $token]);
+        $mailer = \Yii::$app->mailer->compose('seekpassword', ['token' => $token,'url'=>'admin/password/change-password']);
         $mailer->setFrom("15658283276@163.com");
         $mailer->setTo($email);
         $mailer->setSubject("找回密码");

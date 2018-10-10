@@ -99,7 +99,15 @@ $this->title='三斤宠物口粮';
                                 </li>
                                 <li><a href="about-us.html">关于我们</a></li>
                                 <li><a href="contact.html">联系我们</a></li>
-                                <li><a href="<?php echo \yii\helpers\Url::to(['login/login']);?>">登录</a></li>
+                                <?php if(isset(\Yii::$app->session['user'])):?>
+                                    <li><a href="<?php echo \yii\helpers\Url::to(['user/info']);?>" style="color:red;">
+                                            <?php echo \Yii::$app->session['user']['username'];?>欢迎登录
+                                        </a>，<a href="<?php echo \yii\helpers\Url::to(['login/logout']);?>" >
+                                            退出登录
+                                        </a></li>
+                                <?php else:?>
+                                    <li><a href="<?php echo \yii\helpers\Url::to(['login/login']);?>">登录</a></li>
+                                <?php endif;?>
                             </ul>
                         </nav>
                     </div>
