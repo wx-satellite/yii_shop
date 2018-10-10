@@ -9,6 +9,7 @@ class User extends ActiveRecord{
     public $remember_me;
     public $repassword;
     public $account;
+
     public static function tableName()
     {
        return "{{%user}}";
@@ -25,7 +26,7 @@ class User extends ActiveRecord{
             ['repassword','required','message'=>'请重复密码'],
             ['repassword','compare','compareAttribute'=>'password','message'=>'两次密码不一致'],
             ['username','unique','message'=>'该用户名已经存在'],
-            ['email','unique','on'=>'register','message'=>'该邮箱已经存在'],
+            ['email','unique','on'=>['register','change-email'],'message'=>'该邮箱已经存在'],
             ['account','required','message'=>'请填写用户名或者邮箱'],
             ['password','checkPassword','on'=>'login'],
             ['email','checkEmail','on'=>'seek-password']
@@ -38,29 +39,75 @@ class User extends ActiveRecord{
             'register'=>['username','email','password','repassword'],
             'login'=>['account','password','remember_me'],
             'seek-password'=>['email'],
-            'change-password'=>['password','repassword']
+            'change-password'=>['password','repassword'],
+            'change-email'=>['email']
         ];
+    }
+
+    //声明关联
+    public function getProfile(){
+        return $this->hasOne(UserProfile::class,['uid'=>'id']);
+    }
+
+    //修改邮箱
+    public function changeEmail($post){
+        $this->scenario='change-email';
+        if($this->load($post)&&$this->validate()){
+            try{
+                self::updateAll(['email'=>$this->email],'id=:id',[':id'=>\Yii::$app->session['user']['uid']]);
+                \Yii::$app->session->setFlash('Success','修改邮箱成功');
+                return true;
+            }catch(\Exception $e){
+                \Yii::$app->session->setFlash('Error','修改邮箱失败，请重试');
+                return false;
+            }
+        }else{
+            \Yii::$app->session->setFlash('Error','修改邮箱失败，请按要求填写邮箱');
+            return false;
+        }
     }
 
     //重置密码
     public function changePassword($post,$token){
         $this->scenario='change-password';
-        if($this->load($post) && $this->validate()){
-            $email = \Yii::$app->cache->get($token);
-            if(!$email){
-                \Yii::$app->getSession()->setFlash('Error','重置链接已经失效，请重新发送');
+        if($token){
+            //有token表示通过邮件的方式重置密码
+            if($this->load($post) && $this->validate()){
+                $email = \Yii::$app->cache->get($token);
+                if(!$email){
+                    \Yii::$app->getSession()->setFlash('Error','重置链接已经失效，请重新发送');
+                    return false;
+                }
+                try{
+                    self::updateAll(['password'=>md5($this->password)],'email=:email',[':email'=>$email]);
+                    \Yii::$app->cache->delete($email);
+                    \Yii::$app->cache->delete($token);
+                    \Yii::$app->getSession()->setFlash('Success','密码重置成功，赶紧登陆吧');
+                    return true;
+                }catch(\Exception $e){
+                    \Yii::$app->getSession()->setFlash('Error','重置密码失败，请重试');
+                    return false;
+                }
+            }
+        }else{
+            if($this->load($post) && $this->validate()){
+                //没有token表示通过个人主页的方式重置密码
+                try{
+                    self::updateAll(['password'=>md5($this->password)],'id=:id',[':id'=>\Yii::$app->session['user']['uid']]);
+                    \Yii::$app->getSession()->setFlash('Success','重置密码成功');
+                    return true;
+                }catch(\Exception $e){
+                    \Yii::$app->getSession()->setFlash('Error','重置密码失败，请重试');
+                    return false;
+                }
+            }else{
+                \Yii::$app->getSession()->setFlash('Error','重置密码失败，请按要求填写密码');
                 return false;
             }
-            if(!self::updateAll(['password'=>md5($this->password)],'email=:email',[':email'=>$email])){
-                \Yii::$app->getSession()->setFlash('Error','重置密码失败，请重试');
-                return false;
-            }
-            \Yii::$app->cache->delete($email);
-            \Yii::$app->cache->delete($token);
-            \Yii::$app->getSession()->setFlash('Success','密码重置成功，赶紧登陆吧');
-            return true;
         }
+
     }
+
     //发送重置密码邮件时，检验邮箱
     public function checkEmail(){
         if(!$this->hasErrors()){

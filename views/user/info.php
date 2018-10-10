@@ -1,6 +1,7 @@
 <?php
 use yii\bootstrap\Alert;
-
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 ?>
 <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(assets/img/banner/banner-2.jpg);">
     <div class="container">
@@ -36,137 +37,133 @@ use yii\bootstrap\Alert;
                     <div id="faq" class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">Edit your account information </a></h5>
+                                <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">编辑您的帐户信息 </a></h5>
                             </div>
                             <div id="my-account-1" class="panel-collapse collapse show">
                                 <div class="panel-body">
                                     <div class="billing-information-wrapper">
                                         <div class="account-info-wrapper">
-                                            <h4>My Account Information</h4>
-                                            <h5>Your Personal Details</h5>
+                                            <h4>我的个人信息</h4>
                                         </div>
+                                    <?php $form=ActiveForm::begin([
+                                        'fieldConfig'=>[
+                                            'template'=>'{label}{input}<div style="color:red;">{error}</div>'
+                                        ]
+                                    ]);?>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="billing-info">
-                                                    <label>First Name</label>
-                                                    <input type="text">
+                                                    <?php echo $form->field($profile,'last_name')->label('姓')->textInput();?>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="billing-info">
-                                                    <label>Last Name</label>
-                                                    <input type="text">
+                                                    <?php echo $form->field($profile,'first_name')->label('名')->textInput();?>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="billing-info">
-                                                    <label>Email Address</label>
-                                                    <input type="email">
+                                                    <?php echo $form->field($profile,'address')->label('收货地址')->textInput();?>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="billing-info">
-                                                    <label>Telephone</label>
-                                                    <input type="text">
+                                                    <?php echo $form->field($profile,'phone')->label('手机号')->textInput();?>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="billing-info">
-                                                    <label>Fax</label>
-                                                    <input type="text">
+                                                    <?php echo $form->field($profile,'sex')->label('性别')->dropDownList(['1'=>'男生','2'=>'女生']);?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="billing-back-btn">
-                                            <div class="billing-back">
-                                                <a href="#"><i class="ti-arrow-up"></i> back</a>
-                                            </div>
                                             <div class="billing-btn">
-                                                <button type="submit">Continue</button>
+                                                <?php echo Html::submitButton('修改基本信息');?>
                                             </div>
                                         </div>
+                                        <?php ActiveForm::end();?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-2">Change your password </a></h5>
+                                <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-2">修改密码</a></h5>
                             </div>
                             <div id="my-account-2" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="billing-information-wrapper">
                                         <div class="account-info-wrapper">
-                                            <h4>Change Password</h4>
-                                            <h5>Your Password</h5>
+                                            <h4>修改密码</h4>
                                         </div>
+                                        <?php $form=ActiveForm::begin([
+                                            'action'=>\yii\helpers\Url::to(['user/change-password']),
+                                            'fieldConfig'=>[
+                                                'template'=>'{label}{input}<div style="color:red">{error}</div>'
+                                            ]
+                                        ]);?>
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="billing-info">
-                                                    <label>Password</label>
-                                                    <input type="password">
+                                                    <?php echo $form->field($user,'password')->label('新密码')->textInput([
+                                                    ]);?>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="billing-info">
-                                                    <label>Password Confirm</label>
-                                                    <input type="password">
+                                                    <?php echo $form->field($user,'repassword')->label('重复密码')->textInput([
+
+                                                    ]);?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="billing-back-btn">
-                                            <div class="billing-back">
-                                                <a href="#"><i class=" ti-arrow-up"></i> back</a>
-                                            </div>
                                             <div class="billing-btn">
-                                                <button type="submit">Continue</button>
+                                                <?php echo Html::submitButton('修改密码');?>
                                             </div>
                                         </div>
+                                        <?php ActiveForm::end();?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-3">Modify your address book entries   </a></h5>
+                                <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-4">换绑邮箱</a></h5>
                             </div>
-                            <div id="my-account-3" class="panel-collapse collapse">
+                            <div id="my-account-4" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="billing-information-wrapper">
                                         <div class="account-info-wrapper">
-                                            <h4>Address Book Entries</h4>
+                                            <h4>换绑邮箱<span style="color:red;font-size:14px;">（温馨提示：请填写正确的邮箱，在登录或者找回密码场景需要使用）</span></h4>
                                         </div>
-                                        <div class="entries-wrapper">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                                    <div class="entries-info text-center">
-                                                        <p>Gerald Armstrong </p>
-                                                        <p> Address will go here. </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                                    <div class="entries-edit-delete text-center">
-                                                        <a class="edit" href="#">Edit</a>
-                                                        <a href="#">Delete</a>
-                                                    </div>
+                                        <?php $form=ActiveForm::begin([
+                                            'action'=>\yii\helpers\Url::to(['user/change-email']),
+                                            'fieldConfig'=>[
+                                                'template'=>"{label}{input}<div style='color:red;'>{error}</div>"
+                                            ]
+                                        ]);?>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info">
+                                                    <?php echo $form->field($user,'email')->label('邮箱')->textInput();?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="billing-back-btn">
-                                            <div class="billing-back">
-                                                <a href="#"><i class="ti-arrow-up"></i> back</a>
-                                            </div>
                                             <div class="billing-btn">
-                                                <button type="submit">Continue</button>
+                                               <?php echo Html::submitButton('修改邮箱');?>
                                             </div>
                                         </div>
+                                        <?php ActiveForm::end();?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><span>4</span> <a href="wishlist.html">Modify your wish list   </a></h5>
+                                <h5 class="panel-title"><span>4</span> <a href="#">我的订单</a></h5>
                             </div>
                         </div>
                     </div>
