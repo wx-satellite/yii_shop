@@ -43,7 +43,16 @@ use yii\bootstrap\Alert;
                                     ]);
                                 }
                                 ?>
-                                <div class="login-register-form">
+
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-3" style="margin-bottom:30px;">
+                                            <button class="btn-primary btn-lg btn btn-facebook col-sm-12" style="height: 50px;">QQ登录</button>
+                                        </div>
+                                        <div class="col-sm-3" style="margin-bottom:30px;">
+                                            <button class="btn-success btn-lg btn btn-twitter col-sm-12" style="height: 50px;"> 微信登录</button>
+                                        </div>
+                                    </div>
                                     <?php $form=ActiveForm::begin([
                                         'fieldConfig'=>['template'=>'{input}<div style=\'color:red;margin-top:-20px;padding-bottom: 5px;\'>{error}</div>']
                                     ]);?>

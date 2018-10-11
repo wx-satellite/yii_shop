@@ -49,32 +49,17 @@ $this->title='三斤宠物口粮';
                                     <ul class="mega-menu">
                                         <li>
                                             <ul>
-                                                <li class="mega-menu-title">Dogs Food</li>
-                                                <li><a href="shop-page.html">Eggs</a></li>
-                                                <li><a href="shop-page.html">Carrots</a></li>
-                                                <li><a href="shop-page.html">Salmon fishs</a></li>
-                                                <li><a href="shop-page.html">Peanut Butter</a></li>
-                                                <li><a href="shop-page.html">Grapes & Raisins</a></li>
+                                                <li class="mega-menu-title">狗粮</li>
+                                                <li><a href="shop-page.html">鸡蛋</a></li>
+                                                <li><a href="shop-page.html">胡萝卜</a></li>
+                                                <li><a href="shop-page.html">香肠</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <ul>
-                                                <li class="mega-menu-title">Cats Food</li>
-                                                <li><a href="shop-page.html">Meat</a></li>
-                                                <li><a href="shop-page.html">Fish</a></li>
-                                                <li><a href="shop-page.html">Eggs</a></li>
-                                                <li><a href="shop-page.html">Veggies</a></li>
-                                                <li><a href="shop-page.html">Cheese</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <ul>
-                                                <li class="mega-menu-title">Fishs Food</li>
-                                                <li><a href="shop-page.html">Rice</a></li>
-                                                <li><a href="shop-page.html">Veggies</a></li>
-                                                <li><a href="shop-page.html">Cheese</a></li>
-                                                <li><a href="shop-page.html">wheat bran</a></li>
-                                                <li><a href="shop-page.html">Cultivation</a></li>
+                                                <li class="mega-menu-title">猫粮</li>
+                                                <li><a href="shop-page.html">小鱼干</a></li>
+                                                <li><a href="shop-page.html">香肠</a></li>
                                             </ul>
                                         </li>
                                         <li>

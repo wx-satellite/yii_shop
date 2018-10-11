@@ -115,21 +115,36 @@
 
                 <li>
                     <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-file-text"></i>
-                        <span class="menu-text">文档</span>
+                        <i class="menu-icon fa fa-tags"></i>
+                        <span class="menu-text">分类管理</span>
                         <i class="menu-expand"></i>
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo \yii\helpers\Url::to(['category/list']);?>">
                                     <span class="menu-text">
-                                        文章列表                                    </span>
+                                        分类列表                                    </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>
                     </ul>
                 </li>
-
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-shopping-cart"></i>
+                        <span class="menu-text">商品管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="<?php echo \yii\helpers\Url::to(['goods/list']);?>">
+                                    <span class="menu-text">
+                                        商品列表                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-gear"></i>
