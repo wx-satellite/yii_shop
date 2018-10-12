@@ -72,6 +72,8 @@ use yii\bootstrap\Alert;
                         <div style="margin-top: 10px;">
                         <?php echo yii\widgets\LinkPager::widget([
                             'pagination'=>$pager,
+                            'prevPageLabel'=>'上一页',
+                            'nextPageLabel'=>'下一页'
                         ]);?>
                         </div>
                         <div>

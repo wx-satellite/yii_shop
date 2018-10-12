@@ -63,8 +63,12 @@ class Category extends ActiveRecord{
     }
 
     //将树形的cates转成一维数组
-    public function changeCatesArray($cates){
-        $res=[''=>'请选择上级分类','0'=>'顶级分类'];
+    public function changeCatesArray($cates,$flag=true){
+        if($flag){
+            $res=[''=>'请选择上级分类','0'=>'顶级分类'];
+        }else{
+            $res=[''=>'请选择分类'];
+        }
         foreach($cates as $cate){
             $res[$cate['id']]=str_repeat('|---',$cate['level']).$cate['title'];
         }

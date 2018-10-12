@@ -15,7 +15,7 @@ class CategoryController extends Controller{
     }
 
     public function actionAdd(){
-        $type=['1'=>'狗粮','2'=>'猫粮'];
+        $type=\Yii::$app->getModule('admin')->params['CATEGORY_TYPE'];
         $model = new Category();
         $cates = $model->changeCatesArray($model->getTree());
         if(\Yii::$app->request->isPost){
