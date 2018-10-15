@@ -9,10 +9,7 @@ class GoodsController extends Controller{
 
     public $layout='main';
 
-    //public function init(){}
-    //$this->view->params[] 等价于 \Yii::$app->view->params[] 这种方式的赋值，可以在模板文件和布局文件中访问
-    //而使用$this->render('',compact())这种方式的赋值，只能在模板文件中使用
-    //注意在模板文件或者是布局文件中$this不是控制器对象而是视图对象
+
 
     //商品列表
     public function actionList(){
@@ -34,7 +31,7 @@ class GoodsController extends Controller{
             }
         }
         $cate=new Category();
-        $cates=$cate->changeCatesArray($cate->getTree(),false);
+        $cates=$cate->changeCatesArray($cate->getTree('all'),false);
         return $this->render('add',compact('model','cates'));
     }
 
@@ -72,7 +69,7 @@ class GoodsController extends Controller{
             $model->updateGoods($post);
         }
         $cate=new Category();
-        $cates=$cate->changeCatesArray($cate->getTree(),false);
+        $cates=$cate->changeCatesArray($cate->getTree('all'),false);
         return $this->render('edit',compact('model','cates'));
     }
 

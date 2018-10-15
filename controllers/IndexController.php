@@ -2,12 +2,15 @@
 
 
 namespace app\controllers;
-
-use yii\web\Controller;
-class IndexController extends Controller{
+use app\modules\admin\models\Goods;
+class IndexController extends BaseController {
 
     public $layout='template';
     public function actionIndex(){
-        return $this->render('index');
+        $goods = Goods::find()
+            ->where(['status'=>1,'is_on_sale'=>1])
+            ->orderBy(['create_time'=>SORT_DESC])
+            ->all();
+        return $this->render('index',compact('goods'));
     }
 }

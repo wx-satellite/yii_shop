@@ -6,7 +6,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use app\models\User;
 
-class LoginController extends Controller{
+class LoginController extends BaseController {
 
     public $layout='template';
 

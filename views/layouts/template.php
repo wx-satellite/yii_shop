@@ -43,25 +43,20 @@ $this->title='三斤宠物口粮';
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="index.html">主页</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['index/index']);?>">主页</a>
                                 </li>
                                 <li class="mega-menu-position"><a href="shop-page.html">口粮</a>
                                     <ul class="mega-menu">
+                                        <?php foreach($this->params['cates'] as $k=>$cate):?>
                                         <li>
                                             <ul>
-                                                <li class="mega-menu-title">狗粮</li>
-                                                <li><a href="shop-page.html">鸡蛋</a></li>
-                                                <li><a href="shop-page.html">胡萝卜</a></li>
-                                                <li><a href="shop-page.html">香肠</a></li>
+                                                <li class="mega-menu-title"><?php echo \Yii::$app->getModule('admin')->params['CATEGORY_TYPE'][$k];?></li>
+                                                <?php foreach($cate as $c):?>
+                                                <li><a href="shop-page.html"><?php echo $c['title'];?></a></li>
+                                                <?php endforeach;?>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <ul>
-                                                <li class="mega-menu-title">猫粮</li>
-                                                <li><a href="shop-page.html">小鱼干</a></li>
-                                                <li><a href="shop-page.html">香肠</a></li>
-                                            </ul>
-                                        </li>
+                                        <?php endforeach;?>
                                         <li>
                                             <ul>
                                                 <li><a href="shop-page.html"><img alt="" src="/assets/img/banner/menu-img-4.jpg"></a></li>
@@ -82,8 +77,8 @@ $this->title='三斤宠物口粮';
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="about-us.html">关于我们</a></li>
-                                <li><a href="contact.html">联系我们</a></li>
+                                <li><a href="<?php echo \yii\helpers\Url::to(['page/about-us']);?>">关于我们</a></li>
+                                <li><a href="<?php echo \yii\helpers\Url::to(['page/contact-us']);?>">联系我们</a></li>
                                 <?php if(isset(\Yii::$app->session['user'])):?>
                                     <li><a href="<?php echo \yii\helpers\Url::to(['user/info']);?>" style="color:red;">
                                             <?php echo \Yii::$app->session['user']['username'];?>欢迎登录
@@ -113,49 +108,22 @@ $this->title='三斤宠物口粮';
                                 </form>
                             </div>
                         </div>
-
+                    <script>
+                        $(function(){
+                            INFO_URL="<?php echo \yii\helpers\Url::to(['cart/cart-info']);?>"
+                            $('#getInfo').click(function(){
+                                $.get(INFO_URL,{},function(res){
+                                    $('.shopping-cart-content').html(res);
+                                },'html');
+                            });
+                        });
+                    </script>
                         <div class="header-cart same-style">
-                            <button class="icon-cart">
+                            <button class="icon-cart" id="getInfo">
                                 <i class="icon-handbag"></i>
-                                <span class="count-style">02</span>
+                                <span class="count-style" id="cart-count"><?php echo $this->params['cart_count'];?></span>
                             </button>
                             <div class="shopping-cart-content">
-                                <ul>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="/assets/img/cart/cart-1.jpg"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">Dog Calcium Food </a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="ti-close"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="single-shopping-cart">
-                                        <div class="shopping-cart-img">
-                                            <a href="#"><img alt="" src="/assets/img/cart/cart-2.jpg"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="#">Dog Calcium Food</a></h4>
-                                            <h6>Qty: 02</h6>
-                                            <span>$260.00</span>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="ti-close"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="shopping-cart-total">
-                                    <h4>Shipping : <span>$20.00</span></h4>
-                                    <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                </div>
-                                <div class="shopping-cart-btn">
-                                    <a href="cart.html">view cart</a>
-                                    <a href="checkout.html">checkout</a>
-                                </div>
                             </div>
                         </div>
                     </div>

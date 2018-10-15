@@ -45,15 +45,26 @@ use yii\bootstrap\Alert;
                                 }
 
                                 ?>
+                                <script>
+                                    URL = "<?php echo \yii\helpers\Url::to(['category/add']);?>"
+                                    $(function(){
+                                        $('#category-type').change(function(){
+                                            type = $(this).val();
+                                            window.location.href=URL+'&type='+type;
+                                        });
+                                    })
+
+                                </script>
                                 <div id="horizontal-form">
                                     <?php $form=ActiveForm::begin([
                                         'options'=>['class'=>'form-horizontal'],
+                                        'action'=>\yii\helpers\Url::to(['category/add','type'=>$type]),
                                         'fieldConfig'=>[
                                             'template'=>'<div class="form-group">{label}<div class="col-sm-6">{input}</div>{error}</div>'
                                         ]
                                     ]);?>
                                     <?php echo $form->field($model,'type')->label('分类类型',['class'=>'col-sm-2 control-label no-padding-right'])
-                                        ->dropDownList($type);?>
+                                        ->dropDownList($types);?>
                                     <?php echo $form->field($model,'pid')->label('上级分类',['class'=>'col-sm-2 control-label no-padding-right'])
                                             ->dropDownList($cates);?>
                                     <?php echo $form->field($model,'title')->label('分类名称',['class'=>'col-sm-2 control-label no-padding-right'])

@@ -10,14 +10,16 @@ class CategoryController extends Controller{
 
     public function actionList(){
         $model = new Category();
-        $cates = $model->getTree();
+        $cates = $model->getTree('all');
         return $this->render('list',compact('cates'));
     }
 
     public function actionAdd(){
-        $type=\Yii::$app->getModule('admin')->params['CATEGORY_TYPE'];
+        $type = \Yii::$app->request->get('type');
+        $type = in_array($type,array_keys(\Yii::$app->getModule('admin')->params['CATEGORY_TYPE']))?$type:1;
+        $types=\Yii::$app->getModule('admin')->params['CATEGORY_TYPE'];
         $model = new Category();
-        $cates = $model->changeCatesArray($model->getTree());
+        $cates = $model->changeCatesArray($model->getTree($type));
         if(\Yii::$app->request->isPost){
             $post=\Yii::$app->request->post();
             if($model->addCategory($post)){
@@ -25,6 +27,7 @@ class CategoryController extends Controller{
                 \Yii::$app->end();
             }
         }
-        return $this->render('add',compact('model','cates','type'));
+        $model->type=$type;
+        return $this->render('add',compact('model','cates','types','type'));
     }
 }

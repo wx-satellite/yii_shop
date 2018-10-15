@@ -86,11 +86,13 @@
             <h2>Recent Products</h2>
         </div>
         <div class="row">
+            <?php if($goods):?>
+            <?php foreach($goods as $good):?>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                 <div class="product-wrapper mb-10">
                     <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-4.jpg" alt="">
+                        <a href="<?php echo \yii\helpers\Url::to(['goods/detail','id'=>$good['id']]);?>">
+                            <img src="<?php echo $good['picture'].\Yii::$app->getModule('admin')->params['QN_MIDDLE'];?>" alt="">
                         </a>
                         <div class="product-action">
                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -107,213 +109,20 @@
                         </div>
                     </div>
                     <div class="product-content">
-                        <h4><a href="product-details.html">Dog Calcium Food</a></h4>
+                        <h4><a href="<?php echo \yii\helpers\Url::to(['goods/detail','id'=>$good['id']]);?>"><?php echo $good['name'];?></a></h4>
                         <div class="product-price">
-                            <span class="new">$20.00 </span>
-                            <span class="old">$50.00</span>
+                            <?php if($good['is_sale']):?>
+                            <span class="new">RMB:<?php echo $good['sale_price'];?></span>
+                            <span class="old">RMB:<?php echo $good['price'];?></span>
+                            <?php else:?>
+                                <span class="new">RMB:<?php echo $good['price'];?></span>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="product-wrapper mb-10">
-                    <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-5.jpg" alt="">
-                        </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-details.html">Cat Buffalo Food</a></h4>
-                        <div class="product-price">
-                            <span class="new">$22.00 </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="product-wrapper mb-10">
-                    <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-6.jpg" alt="">
-                        </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-details.html">Legacy Dog Food</a></h4>
-                        <div class="product-price">
-                            <span class="new">$50.00 </span>
-                            <span class="old">$70.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="product-wrapper mb-10">
-                    <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-7.jpg" alt="">
-                        </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-details.html">Chicken Dry Cat Food</a></h4>
-                        <div class="product-price">
-                            <span class="new">$60.00 </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="product-wrapper mb-10">
-                    <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-8.jpg" alt="">
-                        </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-details.html">Stomach Dog Food</a></h4>
-                        <div class="product-price">
-                            <span class="new">$70.00 </span>
-                            <span class="old">$90.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="product-wrapper mb-10">
-                    <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-9.jpg" alt="">
-                        </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-details.html">Nourish Puppy Food</a></h4>
-                        <div class="product-price">
-                            <span class="new">$80.00 </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="product-wrapper mb-10">
-                    <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-10.jpg" alt="">
-                        </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-details.html">Tarpaulin Dog Food</a></h4>
-                        <div class="product-price">
-                            <span class="new">$10.00 </span>
-                            <span class="old">$30.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="product-wrapper mb-10">
-                    <div class="product-img">
-                        <a href="product-details.html">
-                            <img src="/assets/img/product/product-11.jpg" alt="">
-                        </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-details.html">Dog Calcium Food</a></h4>
-                        <div class="product-price">
-                            <span class="new">$22.00 </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach;?>
+            <?php endif;?>
         </div>
     </div>
 </div>

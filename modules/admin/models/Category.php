@@ -6,6 +6,9 @@ use yii\db\ActiveRecord;
 
 class Category extends ActiveRecord{
 
+
+    const TOP_CATEGORY=0;
+
     public static function tableName(){
         return "{{%category}}";
     }
@@ -43,8 +46,12 @@ class Category extends ActiveRecord{
     }
 
 
-    public function getTree(){
-        $data = self::find()->where('status=:status',[':status'=>1])->orderBy(['create_time'=>SORT_DESC])->all();
+    public function getTree($type){
+        $where = ['status'=>1];
+        if('all'!==$type){
+            $where['type']=$type;
+        }
+        $data = self::find()->where($where)->orderBy(['create_time'=>SORT_DESC])->all();
         $data = \yii\helpers\ArrayHelper::toArray($data);
         return $this->makeTree($data);
     }
@@ -70,7 +77,20 @@ class Category extends ActiveRecord{
             $res=[''=>'请选择分类'];
         }
         foreach($cates as $cate){
-            $res[$cate['id']]=str_repeat('|---',$cate['level']).$cate['title'];
+            $res[$cate['id']]=str_repeat('|---',$cate['level']).$cate['title'].'  <--'.\Yii::$app->getModule('admin')->params['CATEGORY_TYPE'][$cate['type']];
+        }
+        return $res;
+    }
+
+    //获取分类用于前端显示，暂时只获取顶级分类
+    public function getCategorys(){
+        $cates =  self::find()
+            ->where(['status'=>1,'pid'=>self::TOP_CATEGORY])
+            ->orderBy(['create_time'=>SORT_DESC])
+            ->all();
+        $res=[];
+        foreach ($cates as $k=>$cate){
+            $res[$cate['type']][]=$cate;
         }
         return $res;
     }

@@ -5,7 +5,7 @@ use yii\web\Controller;
 use app\models\User;
 use app\models\UserProfile;
 
-class UserController extends Controller{
+class UserController extends BaseController {
 
     public $layout='template';
 

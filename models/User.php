@@ -43,7 +43,12 @@ class User extends ActiveRecord{
             'change-email'=>['email']
         ];
     }
-
+    public static function checkUserLoginIn(){
+        if(isset(\Yii::$app->session['user'])){
+            return true;
+        }
+        return false;
+    }
     //声明关联
     public function getProfile(){
         return $this->hasOne(UserProfile::class,['uid'=>'id']);
