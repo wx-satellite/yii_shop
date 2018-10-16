@@ -97,7 +97,7 @@ class Cart extends  ActiveRecord{
                     }else{
                         $this->uid=$uid;
                         if($this->count<1)$this->count=1;
-                        if($cart->count>$goods->stock) return ['success'=>0,'message'=>'超过库存量了','count'=>''];
+                        if($this->count>$goods->stock) return ['success'=>0,'message'=>'超过库存量了','count'=>''];
                         $this->save(false);
                     }
                     return ['success'=>1,'message'=>'添加购物车成功','count'=>$this->count];

@@ -4,7 +4,6 @@
 namespace app\models;
 use yii\db\ActiveRecord;
 
-
 class User extends ActiveRecord{
     public $remember_me;
     public $repassword;
@@ -181,7 +180,37 @@ class User extends ActiveRecord{
             $this->saveUserInfoToSession($user);
             //更新登录时间和ip地址
             $this->updateLoginTimeAndIp($user);
+            //将cookie中的购物车信息存入数据库并清空cookie
+            $this->cartInfoSaveToDb();
             \Yii::$app->getSession()->setFlash('Success',$user->username.'你好，欢迎回来!');
+        }
+    }
+
+    //这个函数循环操作了数据库，可以考虑如何优化
+    protected  function cartInfoSaveToDb(){
+        $cart = isset($_COOKIE['cart'])?unserialize($_COOKIE['cart']):[];
+        if(!$cart){
+            return true;
+        }
+        $uid = \Yii::$app->session['user']['uid'];
+        try{
+            foreach($cart as $k=>$v){
+                $c = Cart::find()->where(['goods_id'=>$k,'uid'=>$uid,'status'=>1])->one();
+                if($c){
+                    $c->count+=$v;
+                    $c->save(false);
+                }else{
+                    $c=new Cart();
+                    $c->goods_id=$k;
+                    $c->count=$v;
+                    $c->uid=$uid;
+                    $c->save(false);
+                }
+            }
+            setcookie('cart',serialize([]),\Yii::$app->params['cart_expire_time']);
+            return true;
+        }catch(\Exception $e){
+            return false;
         }
     }
     protected function saveUserInfoToSession($user){

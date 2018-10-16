@@ -158,7 +158,7 @@
                                     <button id="removeAll">清空购物车</button>
                                 </div>
                                 <div class="order">
-                                    <a href="#">总价：<span style="padding-left: 0px;" class="cart-sum"><?php echo sprintf('%.2f',$sum);?></span>，去付款</a>
+                                    <a href="<?php echo \yii\helpers\Url::to(['order/order-show']);?>">总价：<span style="padding-left: 0px;" class="cart-sum"><?php echo sprintf('%.2f',$sum);?></span>，去下单</a>
                                 </div>
                             </div>
                         </div>

@@ -11,6 +11,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@alipay'=>'@vendor/alipay'
     ],
     'defaultRoute'=>'index/index',
     'timeZone' => 'Asia/Shanghai',
