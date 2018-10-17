@@ -52,7 +52,7 @@
                         <img src="/assets/img/product/product-1.jpg" alt="">
                     </div>
                     <div class="single-food-content">
-                        <h3>Dogs Food</h3>
+                        <h3>狗粮</h3>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                         <img src="/assets/img/product/product-2.jpg" alt="">
                     </div>
                     <div class="single-food-content">
-                        <h3>Cats Food</h3>
+                        <h3>猫粮</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                         <img src="/assets/img/product/product-3.jpg" alt="">
                     </div>
                     <div class="single-food-content">
-                        <h3>Fishs Food</h3>
+                        <h3>鱼粮</h3>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
 <div class="product-area pt-95 pb-70 gray-bg">
     <div class="container">
         <div class="section-title text-center mb-55">
-            <h4>Most Populer</h4>
+            <h4>最受欢迎的商品</h4>
             <h2>Recent Products</h2>
         </div>
         <div class="row">
@@ -212,22 +212,22 @@
             <div class="col-lg-4 col-md-4">
                 <div class="service-content text-center mb-30 service-color-1">
                     <img src="/assets/img/icon-img/shipping.png" alt="">
-                    <h4>FREE SHIPPING</h4>
-                    <p>Free shipping on all order </p>
+                    <h4>免运费</h4>
+                    <p>确认订单的时候，选择自送即可免邮费</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="service-content text-center mb-30 service-color-2">
                     <img src="/assets/img/icon-img/support.png" alt="">
-                    <h4>ONLINE SUPPORT</h4>
-                    <p>Online support 24 hours a day</p>
+                    <h4>在线支持</h4>
+                    <p>全天候24小时，营业开张</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="service-content text-center mb-30 service-color-3">
                     <img src="/assets/img/icon-img/money.png" alt="">
-                    <h4>MONEY RETURN</h4>
-                    <p>Back guarantee under 5 days</p>
+                    <h4>售后服务</h4>
+                    <p>支持7天无理由退货</p>
                 </div>
             </div>
         </div>

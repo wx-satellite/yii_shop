@@ -130,7 +130,7 @@ use yii\helpers\Html;
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-4">换绑邮箱</a></h5>
+                                <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-4">换绑邮箱</a></h5>
                             </div>
                             <div id="my-account-4" class="panel-collapse collapse">
                                 <div class="panel-body">
@@ -163,7 +163,7 @@ use yii\helpers\Html;
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><span>4</span> <a href="#">我的订单</a></h5>
+                                <h5 class="panel-title"><span>4</span> <a href="<?php echo \yii\helpers\Url::to(['order/my-order']);?>">我的订单</a></h5>
                             </div>
                         </div>
                     </div>

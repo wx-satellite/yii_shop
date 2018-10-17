@@ -4,7 +4,10 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use app\modules\admin\models\Goods;
 class Order extends ActiveRecord{
-
+    const NOT_PAY=0; //订单生成时的默认状态
+    const NOT_POST=1;   //订单支付完成但还未发货
+    const POST=2; //订单已经发货
+    const RECEIVER=3;   //已经收到
     public $receiver;
     public $tel;
     public $address;
@@ -99,13 +102,19 @@ class Order extends ActiveRecord{
                 }
             }
             $this->receiver_info=$this->recombine();
+            //运费
             $this->post_price = \Yii::$app->params['post_type'][$this->post_type]['price'];
             $goods_price=0;
             $goods=[];
-            foreach($cart as $c){
+            $order_name='';
+            foreach($cart as $k=>$c){
                 $goods[]=[$c['id'],$c['name'],$c['picture'],$c['current_price'],$c['count']];
                 $goods_price+=$c['current_price']*$c['count'];
+                if($k<=2){
+                    $order_name.=$c['name'].',';
+                }
             }
+            $this->order_name=trim($order_name,',').'等商品';
             $this->goods_total_price=$goods_price;
             $this->order_total_price=$goods_price+$this->post_price;
             $this->orderno=$this->build_order_no();
@@ -114,6 +123,7 @@ class Order extends ActiveRecord{
                 $trans = \Yii::$app->db->beginTransaction();
                 $this->save(false);
                 foreach($goods as $k=>$g){
+                    //将订单id存入数组中
                     $goods[$k][]=$this->id;
                 }
                 \Yii::$app->db->createCommand()->batchInsert('order_detail',
@@ -123,7 +133,7 @@ class Order extends ActiveRecord{
                 //删除购物车数据表中的数据
                 $this->deleteCart();
                 $trans->commit();
-                return $this->id;
+                return $this->orderno;
             }catch(\Exception $e){
                 if(\Yii::$app->db->getTransaction()){
                     $trans->rollBack();

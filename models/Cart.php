@@ -80,6 +80,7 @@ class Cart extends  ActiveRecord{
     }
 
     //添加购物车----购物车的结构： $cart[商品ID]=商品购买的数量
+    //注意库存量的检测
     public function addGoodsToCart($post){
         $this->scenario='create';
         if($this->load($post)&&$this->validate()){
