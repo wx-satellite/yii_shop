@@ -47,10 +47,9 @@ class GoodsController extends Controller{
             \Yii::$app->getSession()->setFlash('Success','修改上架状态成功');
         }catch(\Exception $e){
             \Yii::$app->getSession()->setFlash('Error','修改上架状态失败');
-        }finally{
-            $this->redirect(['goods/list']);
-            \Yii::$app->end();
         }
+        $this->redirect(['goods/list']);
+        \Yii::$app->end();
     }
 
     //删除商品
@@ -75,7 +74,7 @@ class GoodsController extends Controller{
 
     protected function checkGoodsExistsById(){
         $id = \Yii::$app->request->get('id');
-        $goods = Goods::find()->where('id=:id',[':id'=>$id])->one();
+        $goods = Goods::find()->where('id=:id and status!=-1',[':id'=>$id])->one();
         if(empty($goods)){
             \Yii::$app->getSession()->setFlash('Error','非法请求！');
             $this->redirect(['goods/list']);

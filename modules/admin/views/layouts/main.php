@@ -120,7 +120,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['manager/list']);?>">
+                            <a href="<?php echo \yii\helpers\Url::to(['user/list']);?>">
                                     <span class="menu-text">
                                         用户列表                                    </span>
                                 <i class="menu-expand"></i>
@@ -179,7 +179,7 @@
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa  fa-book"></i>
-                        <span class="menu-text">博客管理</span>
+                        <span class="menu-text">文章管理</span>
                         <i class="menu-expand"></i>
                     </a>
                     <ul class="submenu">
@@ -187,6 +187,13 @@
                             <a href="#">
                                     <span class="menu-text">
                                         博客列表                                   </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                    <span class="menu-text">
+                                        内页列表                                   </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>
