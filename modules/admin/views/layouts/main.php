@@ -207,7 +207,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="#">
+                            <a href="<?php echo \yii\helpers\Url::to(['link/list']);?>">
                                     <span class="menu-text">
                                         友情链接                                   </span>
                                 <i class="menu-expand"></i>

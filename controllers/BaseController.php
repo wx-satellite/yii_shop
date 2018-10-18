@@ -4,6 +4,7 @@
 namespace app\controllers;
 use yii\web\Controller;
 use app\modules\admin\models\Category;
+use app\modules\admin\models\Links;
 use app\models\Cart;
 class BaseController extends Controller{
 
@@ -19,6 +20,7 @@ class BaseController extends Controller{
 
         \Yii::$app->view->params['cates']=$cates;
         $this->getCartGoodsCount();
+        $this->getLinks();
     }
 
 
@@ -32,5 +34,11 @@ class BaseController extends Controller{
             $cart_count+=$cart['count'];
         }
         $this->view->params['cart_count']=$cart_count;
+    }
+
+    //获取底部友情链接
+    public function getLinks(){
+        $links = Links::find()->where(['status'=>1])->orderBy(['create_time'=>SORT_DESC])->all();
+        $this->view->params['links']=$links;
     }
 }
