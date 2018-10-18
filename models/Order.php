@@ -8,9 +8,13 @@ class Order extends ActiveRecord{
     const NOT_POST=1;   //订单支付完成但还未发货
     const POST=2; //订单已经发货
     const RECEIVER=3;   //已经收到
+    const CANCEL=4; //取消订单
+    const DELETE=-1;//删除订单
+
     public $receiver;
     public $tel;
     public $address;
+
     public static function tableName(){
         return "{{%order}}";
     }
@@ -24,8 +28,19 @@ class Order extends ActiveRecord{
             ['post_type','required','message'=>'请选择配送方式'],
             ['pay_type','required','message'=>'请选择支付方式'],
             ['post_type','checkPostType'],
-            ['pay_type','checkPayType']
+            ['pay_type','checkPayType'],
+            ['post_number','required','message'=>'请填写订单号'],
+            ['post_number','checkNumber']
         ];
+    }
+    public function checkNumber(){
+        if(!$this->hasErrors()){
+            if(!preg_match('/^\d+$/',$this->post_number)){
+                $this->addError('post_number','快递单号格式错误');
+                return;
+            }
+        }
+
     }
 
     public function checkPostType(){
@@ -52,9 +67,35 @@ class Order extends ActiveRecord{
     public function scenarios()
     {
         return [
-            'create'=>['receiver','tel','address','post_type','pay_type']
+            'create'=>['receiver','tel','address','post_type','pay_type'],
+            'send'=>['post_number']
         ];
     }
+    //后台设置发货
+    public function postOrder($post){
+        $this->scenario='send';
+        if($this->load($post) && $this->validate()){
+            $this->status=self::POST;
+            try{
+                $this->save(false);
+                return true;
+            }catch(\Exception $e){
+                \Yii::$app->getSession()->setFlash('Error','设置订单号失败，请重试');
+                return false;
+            }
+
+        }
+    }
+
+    //与用户表关联
+    public function getUserInfo(){
+        return $this->hasOne(User::className(),['id'=>'uid']);
+    }
+
+    public function getOrderDetail(){
+        return OrderDetail::find()->select('goods_name,goods_price,goods_count')->where(['status'=>1,'order_id'=>$this->id])->all();
+    }
+
     //生成订单号
     protected function build_order_no()
     {

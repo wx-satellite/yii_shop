@@ -39,7 +39,7 @@ use yii\helpers\Html;
                             <div class="panel-heading">
                                 <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">编辑您的帐户信息 </a></h5>
                             </div>
-                            <div id="my-account-1" class="panel-collapse collapse show">
+                            <div id="my-account-1" class="panel-collapse collapse ">
                                 <div class="panel-body">
                                     <div class="billing-information-wrapper">
                                         <div class="account-info-wrapper">

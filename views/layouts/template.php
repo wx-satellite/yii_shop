@@ -23,6 +23,7 @@ $this->title='三斤宠物口粮';
     <link rel="stylesheet" href="/assets/css/slick.css">
     <link rel="stylesheet" href="/assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/timeline.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
     <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="/assets/js/vendor/jquery-1.12.0.min.js"></script>

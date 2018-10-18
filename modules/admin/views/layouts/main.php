@@ -112,7 +112,22 @@
                         </li>
                     </ul>
                 </li>
-
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-user"></i>
+                        <span class="menu-text">用户管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="<?php echo \yii\helpers\Url::to(['manager/list']);?>">
+                                    <span class="menu-text">
+                                        用户列表                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-tags"></i>
@@ -147,15 +162,47 @@
                 </li>
                 <li>
                     <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-gear"></i>
-                        <span class="menu-text">系统</span>
+                        <i class="menu-icon fa  fa-list-alt"></i>
+                        <span class="menu-text">订单管理</span>
                         <i class="menu-expand"></i>
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo \yii\helpers\Url::to(['order/list']);?>">
                                     <span class="menu-text">
-                                        配置                                   </span>
+                                        订单列表                                   </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa  fa-book"></i>
+                        <span class="menu-text">博客管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#">
+                                    <span class="menu-text">
+                                        博客列表                                   </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa  fa-chain"></i>
+                        <span class="menu-text">链接管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#">
+                                    <span class="menu-text">
+                                        友情链接                                   </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>
@@ -163,9 +210,9 @@
                 </li>
 
                 <li>
-                    <a href="http://www.chuanke.com/s2260700.html" class="menu-dropdown">
+                    <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-gear"></i>
-                        <span class="menu-text">Tp5视频教程</span>
+                        <span class="menu-text">系统设置</span>
                         <i class="menu-expand"></i>
                     </a>
                 </li>

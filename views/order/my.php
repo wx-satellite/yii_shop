@@ -61,24 +61,29 @@ use yii\bootstrap\Alert;
                                 </td>
                                 <td style="text-align: center;">
 
-                                        <?php echo '运费：'.sprintf('%.2f',$order->order_total_price-$order->goods_total_price).'<br/>'.
-                                            '商品价格：'.$order->goods_total_price.'<br/>'.'总价：'.$order->order_total_price;?>
+                                        <?php echo
+                                            '总价：'.$order->order_total_price.'元<br/>'.'（含运费：'.sprintf('%.2f',$order->order_total_price-$order->goods_total_price).'元）';?>
 
                                 </td>
                                 <td style="text-align: center;"><?php echo $order->create_time;?></td>
                                 <td style="text-align: center;">
-                                    <?php echo \Yii::$app->params['order_status'][$order->status];?>
+                                    <span style="font-weight: bold;"><?php echo \Yii::$app->params['order_status'][$order->status];?></span>
                                 </td>
                                 <td class="product-wishlist-cart">
                                     <?php if(Order::NOT_PAY===(int)$order->status){
                                         $url = \yii\helpers\Url::to(['order/pay','id'=>$order->id]);
-                                        echo '<a href="'.$url.'">去支付</a>';
+                                        $delete_url = \yii\helpers\Url::to(['order/cancel','id'=>$order->id]);
+                                        echo '<a href="'.$url.'">去支付</a><a style="margin-left:5px;" href="'.$delete_url.'">取消订单</a>';
                                     }elseif(Order::NOT_POST===(int)$order->status){
                                         echo '<a href="javascript:alert(\'退款是不存在的。\')">退款</a>';
                                     }elseif(Order::POST===(int)$order->status){
-                                        echo '<a href="#">确认收货</a>';
+                                        $exress_url = \yii\helpers\Url::to(['order/express','id'=>$order->id]);
+                                        $receive_url= \yii\helpers\Url::to(['order/receive','id'=>$order->id]);
+                                        echo '<a  href="'.$exress_url.'">查看物流</a><a style="margin-left:5px;" href="'.$receive_url.'">确认收货</a>';
+                                    }elseif(Order::CANCEL===(int)$order->status){
+                                        echo '<a href="#">删除订单</a>';
                                     }else{
-                                        echo '订单已完成';
+                                        echo '已签收';
                                     }
                                         ?>
                                 </td>

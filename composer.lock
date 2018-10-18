@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc7a8cdcef199b8ae2c984c1e3e94b51",
+    "content-hash": "77acb69f4e798faabbde06104ed69637",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -172,6 +172,101 @@
                 "markdown-extra"
             ],
             "time": "2018-06-13T20:42:05+00:00"
+        },
+        {
+            "name": "crazyfd/yii2-qiniu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazyfd/upload.git",
+                "reference": "7334326aac39b4839d045ab28493e37bf1db5d56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazyfd/upload/zipball/7334326aac39b4839d045ab28493e37bf1db5d56",
+                "reference": "7334326aac39b4839d045ab28493e37bf1db5d56",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "crazyfd\\qiniu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "crazyfd",
+                    "email": "crazyfd@qq.com"
+                }
+            ],
+            "description": "yii2上传到七牛云存储",
+            "keywords": [
+                "qiniu",
+                "upload",
+                "yii"
+            ],
+            "time": "2018-01-03T06:10:14+00:00"
+        },
+        {
+            "name": "dzer/yii2-express",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dzer/yii2-express.git",
+                "reference": "652c94847c965f21727ccba8230d91bdd61d8564"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dzer/yii2-express/zipball/652c94847c965f21727ccba8230d91bdd61d8564",
+                "reference": "652c94847c965f21727ccba8230d91bdd61d8564",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dzer\\express\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "dzer",
+                    "email": "d20053140@gmail.com",
+                    "homepage": "http://dzer.me"
+                }
+            ],
+            "description": "快递单号查询,支持国内近100家快递单号查询。",
+            "keywords": [
+                "extension",
+                "yii2",
+                "快递"
+            ],
+            "time": "2016-06-17T03:18:20+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -3688,7 +3783,10 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "crazyfd/yii2-qiniu": 20,
+        "dzer/yii2-express": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
