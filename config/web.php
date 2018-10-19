@@ -16,6 +16,7 @@ $config = [
     'defaultRoute'=>'index/index',
     'timeZone' => 'Asia/Shanghai',
     'language'=>'zh-CN',
+    'charset'=>'utf-8',
 //    'layoutPath'=>'..\views\layouts',
     'components' => [
         'request' => [

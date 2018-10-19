@@ -3,13 +3,13 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Alert;
 ?>
-<div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(assets/img/banner/banner-2.jpg);">
+<div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/img/banner/banner-2.jpg);">
     <div class="container">
         <div class="breadcrumb-content text-center">
             <h2>Login / Register</h2>
             <ul>
-                <li><a href="index.html">home</a></li>
-                <li class="active">Login / Register</li>
+                <li><a href="<?php echo \yii\helpers\Url::to(['index/index']);?>">首页</a></li>
+                <li class="active">登录 / 注册</li>
             </ul>
         </div>
     </div>

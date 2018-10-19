@@ -47,6 +47,7 @@ use yii\helpers\Html;
                         ?>
                         <div id="horizontal-form">
                             <?php $form=ActiveForm::begin([
+                                'enableClientScript'=>false,
                                 'options'=>['class'=>'form-horizontal','enctype'=>'multipart/form-data'],
                                 'fieldConfig'=>[
                                     'template'=>'<div class="form-group">{label}<div class="col-sm-6">{input}</div>{error}</div>'

@@ -1,3 +1,11 @@
+<?php
+
+use app\assets\AdminAsset;
+
+AdminAsset::register($this);
+
+?>
+<?php $this->beginPage();?>
 <!DOCTYPE html>
 <html><head>
     <meta charset="utf-8">
@@ -8,19 +16,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!--Basic Styles-->
-    <link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
-    <link href="/assets/admin/css/font-awesome.css" rel="stylesheet">
-    <link href="/assets/admin/css/weather-icons.css" rel="stylesheet">
-
-    <!--Beyond styles-->
-    <link id="beyond-link" href="/assets/admin/css/beyond.css" rel="stylesheet" type="text/css">
-    <link href="/assets/admin/css/demo.css" rel="stylesheet">
-    <link href="/assets/admin/css/typicons.css" rel="stylesheet">
-    <link href="/assets/admin/css/animate.css" rel="stylesheet">
-    <script src="/assets/admin/js/jquery_002.js"></script>
-    <script src="/assets/admin/js/bootstrap.js"></script>
+    <?php $this->head();?>
 </head>
 <body>
+<?php $this->beginBody();?>
 <!-- 头部 -->
 <div class="navbar">
     <div class="navbar-inner">
@@ -29,7 +28,7 @@
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/assets/img/logo/logo.png" alt="">
+                        <img src="/img/logo/logo.png" alt="">
                     </small>
                 </a>
             </div>
@@ -46,7 +45,7 @@
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
-                                    <img src="/assets/admin/images/header.jpg">
+                                    <img src="/admin/images/header.jpg">
                                 </div>
                                 <section>
                                     <h2><span class="profile"><span>admin</span></span></h2>
@@ -236,9 +235,9 @@
 
 <!--Basic Scripts-->
 
-<!--Beyond Scripts-->
-<script src="/assets/admin/js/beyond.js"></script>
 
 
 
+<?php $this->endBody();?>
 </body></html>
+<?php $this->endPage();?>

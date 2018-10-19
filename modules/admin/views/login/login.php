@@ -12,12 +12,12 @@ use yii\helpers\Html;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!--Basic Styles-->
-    <link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
-    <link href="/assets/admin/css/font-awesome.css" rel="stylesheet">
+    <link href="/admin/css/bootstrap.css" rel="stylesheet">
+    <link href="/admin/css/font-awesome.css" rel="stylesheet">
     <!--Beyond styles-->
-    <link id="beyond-link" href="/assets/admin/css/beyond.css" rel="stylesheet">
-    <link href="/assets/admin/css/demo.css" rel="stylesheet">
-    <link href="/assets/admin/css/animate.css" rel="stylesheet">
+    <link id="beyond-link" href="/admin/css/beyond.css" rel="stylesheet">
+    <link href="/admin/css/demo.css" rel="stylesheet">
+    <link href="/admin/css/animate.css" rel="stylesheet">
 </head>
 <!--Head Ends-->
 <!--Body-->

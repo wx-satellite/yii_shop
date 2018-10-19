@@ -45,18 +45,10 @@ use yii\bootstrap\Alert;
                                 }
 
                                 ?>
-                                <script>
-                                    URL = "<?php echo \yii\helpers\Url::to(['category/add']);?>"
-                                    $(function(){
-                                        $('#category-type').change(function(){
-                                            type = $(this).val();
-                                            window.location.href=URL+'&type='+type;
-                                        });
-                                    })
 
-                                </script>
                                 <div id="horizontal-form">
                                     <?php $form=ActiveForm::begin([
+                                        'enableClientScript'=>false,
                                         'options'=>['class'=>'form-horizontal'],
                                         'action'=>\yii\helpers\Url::to(['category/add','type'=>$type]),
                                         'fieldConfig'=>[
@@ -86,3 +78,13 @@ use yii\bootstrap\Alert;
             <!-- /Page Body -->
         </div>
         <!-- /Page Content -->
+<?php $this->beginBlock('cate-add');?>
+URL = "<?php echo \yii\helpers\Url::to(['category/add']);?>"
+$(function(){
+    $('#category-type').change(function(){
+        type = $(this).val();
+        window.location.href=URL+'&type='+type;
+    });
+})
+<?php $this->endBlock();?>
+<?php $this->registerJs($this->blocks['cate-add'],yii\web\View::POS_END);?>
