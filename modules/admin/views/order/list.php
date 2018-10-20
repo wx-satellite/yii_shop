@@ -1,18 +1,10 @@
 <?php
 use app\models\Order;
 use yii\widgets\LinkPager;
+$this->title='订单列表';
+$this->params['breadcrumbs']=[['label'=>'订单列表']];
 ?>
-        <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li class="active">订单管理</li>
-                </ul>
-            </div>
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -105,5 +97,4 @@ use yii\widgets\LinkPager;
 
             </div>
             <!-- /Page Body -->
-        </div>
-        <!-- /Page Content -->
+

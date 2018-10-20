@@ -1,16 +1,9 @@
 <?php
 use yii\bootstrap\Alert;
+$this->title='管理员列表';
+$this->params['breadcrumbs']=[['label'=>'管理员列表']];
 ?>
-<div class="page-content">
-    <!-- Page Breadcrumb -->
-    <div class="page-breadcrumbs">
-        <ul class="breadcrumb">
-            <li>
-                <a href="#">管理员管理</a>
-            </li>
-            <li class="active">管理员列表</li>
-        </ul>
-    </div>
+
     <!-- /Page Breadcrumb -->
 
     <!-- Page Body -->
@@ -84,5 +77,3 @@ use yii\bootstrap\Alert;
         </div>
 
     </div>
-    <!-- /Page Body -->
-</div>

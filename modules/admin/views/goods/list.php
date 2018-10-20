@@ -1,17 +1,10 @@
 <?php
 use yii\bootstrap\Alert;
+$this->title='商品列表';
+$this->params['breadcrumbs']=[['label'=>'商品列表']];
 ?>
         <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li class="active">商品管理</li>
-                </ul>
-            </div>
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -101,6 +94,4 @@ use yii\bootstrap\Alert;
                 </div>
 
             </div>
-            <!-- /Page Body -->
-        </div>
-        <!-- /Page Content -->
+

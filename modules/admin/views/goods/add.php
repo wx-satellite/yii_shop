@@ -2,21 +2,11 @@
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Alert;
 use yii\helpers\Html;
+$this->title='添加商品';
+$this->params['breadcrumbs']=[['label'=>'商品列表','url'=>['/admin/goods/list']],['label'=>'添加商品']];
 ?>
         <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo \yii\helpers\Url::to(['goods/list']);?>">商品列表</a>
-                    </li>
-                    <li class="active">添加商品</li>
-                </ul>
-            </div>
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -130,5 +120,4 @@ use yii\helpers\Html;
 
             </div>
             <!-- /Page Body -->
-        </div>
-        <!-- /Page Content -->
+

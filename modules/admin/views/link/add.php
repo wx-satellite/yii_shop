@@ -2,21 +2,11 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Alert;
+$this->title='添加链接';
+$this->params['breadcrumbs']=[['label'=>'链接列表','url'=>['/admin/link/list']],['label'=>'添加链接']];
 ?>
         <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo \yii\helpers\Url::to(['link/list']);?>">友情链接</a>
-                    </li>
-                    <li class="active">添加友情链接</li>
-                </ul>
-            </div>
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -75,4 +65,4 @@ use yii\bootstrap\Alert;
 
             </div>
             <!-- /Page Body -->
-        </div>
+

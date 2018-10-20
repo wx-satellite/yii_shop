@@ -1,21 +1,10 @@
 <?php
 use yii\bootstrap\ActiveForm;
-
+$this->title='订单发货';
+$this->params['breadcrumbs']=[['label'=>'订单列表','url'=>['/admin/order/list']],['label'=>'订单发货']];
 ?>
         <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo \yii\helpers\Url::to(['order/list']);?>">订单管理</a>
-                    </li>
-                    <li class="active">发货</li>
-                </ul>
-            </div>
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -53,4 +42,4 @@ use yii\bootstrap\ActiveForm;
 
             </div>
             <!-- /Page Body -->
-        </div>
+   

@@ -1,20 +1,21 @@
 <?php
 
 use app\assets\AdminAsset;
-
+use yii\widgets\Breadcrumbs;
 AdminAsset::register($this);
-
 ?>
 <?php $this->beginPage();?>
 <!DOCTYPE html>
-<html><head>
-    <meta charset="utf-8">
-    <title>ThinkPHP5.0</title>
+<html lang="<?php echo \Yii::$app->language;?>"><head>
+    <meta charset="<?php echo \Yii::$app->charset;?>">
+    <title><?php echo $this->title;?>-后台管理</title>
+    <?php
+        $this->registerMetaTag(['name'=>'description','content'=>'三斤宠物口粮管理后台']);
+        $this->registerMetaTag(['name'=>'viewport','content'=>'width=device-width, initial-scale=1.0']);
+        $this->registerMetaTag(['http-equiv'=>'X-UA-Compatible','content'=>'IE=edge']);
+        $this->registerMetaTag(['http-equiv'=>'Content-Type','content'=>'text/html; charset=UTF-8']);
+    ?>
 
-    <meta name="description" content="Dashboard">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!--Basic Styles-->
     <?php $this->head();?>
 </head>
@@ -228,7 +229,15 @@ AdminAsset::register($this);
         </div>
         <!-- /Page Sidebar -->
         <!-- Page Content -->
-        <?php echo $content;?>
+        <div class="page-content">
+            <div class="page-breadcrumbs">
+                <?php echo Breadcrumbs::widget([
+                        'homeLink'=>['label'=>'首页','url'=>['/admin/index/index']],
+                        'links'=>isset($this->params['breadcrumbs'])?$this->params['breadcrumbs']:[],
+                ]);?>
+            </div>
+            <?php echo $content;?>
+        </div>
     <!-- /Page Content -->
 </div>
 </div>

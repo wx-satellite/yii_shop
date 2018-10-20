@@ -2,20 +2,10 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Alert;
+$this->title='添加管理员';
+$this->params['breadcrumbs']=[['label'=>'管理员列表','url'=>['/admin/manager/list']],['label'=>'添加管理员']];
 ?>
-<div class="page-content">
-    <!-- Page Breadcrumb -->
-    <div class="page-breadcrumbs">
-        <ul class="breadcrumb">
-            <li>
-                <a href="#">系统</a>
-            </li>
-            <li>
-                <a href="<?php echo \yii\helpers\Url::to(['manager/list']);?>">管理员列表</a>
-            </li>
-            <li class="active">添加管理员</li>
-        </ul>
-    </div>
+
     <!-- /Page Breadcrumb -->
 
     <!-- Page Body -->
@@ -76,4 +66,3 @@ use yii\bootstrap\Alert;
 
     </div>
     <!-- /Page Body -->
-</div>

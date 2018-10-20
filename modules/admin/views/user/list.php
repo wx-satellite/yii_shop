@@ -1,15 +1,10 @@
+<?php
+$this->title='用户列表';
+$this->params['breadcrumbs']=[['label'=>'用户列表']];
 
+?>
         <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li class="active">用户管理</li>
-                </ul>
-            </div>
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -62,5 +57,4 @@
                 </div>
 
             </div>
-            <!-- /Page Body -->
-        </div>
+

@@ -1,15 +1,12 @@
+<?php
+$this->title='分类列表';
+$this->params['breadcrumbs']=[['label'=>'分类列表']];
 
+?>
         <!-- Page Content -->
-        <div class="page-content">
+
             <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li class="active">商品分类管理</li>
-                </ul>
-            </div>
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -61,5 +58,5 @@
 
             </div>
             <!-- /Page Body -->
-        </div>
+
         <!-- /Page Content -->

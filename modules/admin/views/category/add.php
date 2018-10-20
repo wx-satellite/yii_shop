@@ -2,21 +2,13 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Alert;
+$this->title='添加分类';
+$this->params['breadcrumbs']=[['label'=>'分类列表','url'=>['/admin/category/list']],['label'=>'添加分类']];
 ?>
         <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo \yii\helpers\Url::to(['category/list']);?>">商品分类管理</a>
-                    </li>
-                    <li class="active">添加分类</li>
-                </ul>
-            </div>
+
+
+
             <!-- /Page Breadcrumb -->
 
             <!-- Page Body -->
@@ -76,7 +68,7 @@ use yii\bootstrap\Alert;
 
             </div>
             <!-- /Page Body -->
-        </div>
+
         <!-- /Page Content -->
 <?php $this->beginBlock('cate-add');?>
 URL = "<?php echo \yii\helpers\Url::to(['category/add']);?>"
