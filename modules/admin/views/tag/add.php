@@ -36,6 +36,7 @@ $this->params['breadcrumbs']=[['label'=>'标签列表','url'=>['/admin/tag/list'
                                 ?>
                                 <div id="horizontal-form">
                                     <?php $form=ActiveForm::begin([
+                                            'enableClientScript'=>false,
                                             'options'=>['class'=>'form-horizontal'],
                                             'fieldConfig'=>[
                                                     'template'=>'<div class="form-group">{label}<div class="col-sm-6">{input}</div>{error}</div>'

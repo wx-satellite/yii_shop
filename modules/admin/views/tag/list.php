@@ -38,6 +38,7 @@ $this->params['breadcrumbs']=[['label'=>'标签列表']];
                                             <th class="text-center">序号</th>
                                             <th class="text-center">标签名称</th>
                                             <th class="text-center">状态</th>
+                                            <th class="text-center">更新时间</th>
                                             <th class="text-center">操作</th>
                                         </tr>
                                         </thead>
@@ -54,6 +55,7 @@ $this->params['breadcrumbs']=[['label'=>'标签列表']];
                                                 <?php else:?>
                                                 <?php endif;?>
                                             </td>
+                                            <td align="center"><?php echo $tag['update_time'];?></td>
                                             <td align="center">
                                                 <a href="<?php echo \yii\helpers\Url::to(['tag/change-status','id'=>$tag->id]);?>" class="btn btn-azure btn-sm shiny">
                                                     修改状态
@@ -69,6 +71,13 @@ $this->params['breadcrumbs']=[['label'=>'标签列表']];
                                      <?php endforeach;?>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <?php echo yii\widgets\LinkPager::widget([
+                                        'pagination'=>$pager,
+                                        'prevPageLabel'=>'上一页',
+                                        'nextPageLabel'=>'下一页'
+                                    ]);?>
                                 </div>
                                 <div>
                                 </div>

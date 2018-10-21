@@ -57,4 +57,15 @@ class Tag extends ActiveRecord{
             }
         }
     }
+
+    public static function getTags(){
+        $res=self::find()->where('status!=:status',[':status'=>-1])
+            ->orderBy(['create_time'=>SORT_DESC])->all();
+        $arr=[];
+        $arr['']='请选择标签';
+        foreach ($res as $k){
+            $arr[$k['id']]=$k['name'];
+        }
+        return $arr;
+    }
 }
