@@ -184,16 +184,16 @@ AdminAsset::register($this);
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="#">
+                            <a href="<?php echo \yii\helpers\Url::to(['tag/list']);?>">
                                     <span class="menu-text">
-                                        博客列表                                   </span>
+                                        标签列表                                   </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php echo \yii\helpers\Url::to(['article/list']);?>">
                                     <span class="menu-text">
-                                        内页列表                                   </span>
+                                        文章列表                                   </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>

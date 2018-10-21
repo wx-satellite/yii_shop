@@ -19,6 +19,21 @@ $config = [
     'charset'=>'utf-8',
 //    'layoutPath'=>'..\views\layouts',
     'components' => [
+        'assetManager'=>[
+            'class'=>'yii\web\AssetManager',
+            'bundles'=>[
+                'yii\web\JqueryAsset'=>[
+                    'js'=>[
+                        YII_ENV_DEV?'jquery.js':'jquery.min.js'
+                    ]
+                ],
+                'yii\bootstrap\BootstrapAsset'=>[
+                    'css'=>[
+                        YII_ENV_DEV?'css/bootstrap.css':'css/bootstrap.min.css'
+                    ]
+                ]
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'EFOVr_elAOuet2b21ZL8cHfyM7AD2UYr',

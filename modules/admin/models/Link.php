@@ -3,7 +3,7 @@
 namespace app\modules\admin\models;
 
 use yii\db\ActiveRecord;
-class Links extends ActiveRecord{
+class Link extends ActiveRecord{
 
 
     public static function tableName()

@@ -21,7 +21,6 @@ class AdminAsset extends AssetBundle{
         'admin/css/demo.css',
         'admin/css/typicons.css',
         'admin/css/animate.css',
-        ''
     ];
 
     //设置需要加载的js文件
