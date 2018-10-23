@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77acb69f4e798faabbde06104ed69637",
+    "content-hash": "c3a0e77a2d14fa15be1e7eadc8769667",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -612,6 +612,61 @@
                 "yii2"
             ],
             "time": "2018-08-25T10:44:34+00:00"
+        },
+        {
+            "name": "yiisoft/yii2-elasticsearch",
+            "version": "2.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-elasticsearch.git",
+                "reference": "32123e31267e39a777b194e97c34cdd5ccd7717a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/32123e31267e39a777b194e97c34cdd5ccd7717a",
+                "reference": "32123e31267e39a777b194e97c34cdd5ccd7717a",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-curl": "*",
+                "yiisoft/yii2": "~2.0.14"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\elasticsearch\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc"
+                }
+            ],
+            "description": "Elasticsearch integration and ActiveRecord for the Yii framework",
+            "keywords": [
+                "active-record",
+                "elasticsearch",
+                "fulltext",
+                "search",
+                "yii2"
+            ],
+            "time": "2018-10-10T19:33:28+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",

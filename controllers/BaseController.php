@@ -4,10 +4,10 @@
 namespace app\controllers;
 use yii\web\Controller;
 use app\modules\admin\models\Category;
-use app\modules\admin\models\Links;
+use app\modules\admin\models\Link;
 use app\models\Cart;
 class BaseController extends Controller{
-
+    public $layout='template';
     //public function init(){}  控制器对象实例化的时候会调用这个方法，从名字中也可以看出是初始化方法。注意和构造函数的区别
 
     //$this->view->params[] 等价于 \Yii::$app->view->params[] 这种方式的赋值，可以在模板文件和布局文件中访问
@@ -38,7 +38,10 @@ class BaseController extends Controller{
 
     //获取底部友情链接
     public function getLinks(){
-        $links = Links::find()->where(['status'=>1])->orderBy(['create_time'=>SORT_DESC])->all();
+        $links = Link::find()->where(['status'=>1])->orderBy(['create_time'=>SORT_DESC])->all();
         $this->view->params['links']=$links;
     }
+
+
+
 }

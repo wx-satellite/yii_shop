@@ -34,6 +34,13 @@ $config = [
                 ]
             ],
         ],
+        'elasticsearch' => [
+            'class' => 'yii\elasticsearch\Connection',
+            'nodes' => [
+                ['http_address' => '127.0.0.1:9200'],
+                // configure more hosts if you have a cluster
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'EFOVr_elAOuet2b21ZL8cHfyM7AD2UYr',

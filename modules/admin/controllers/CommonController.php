@@ -11,6 +11,7 @@ class CommonController extends Controller{
 
     //判断传入的id是否合法
     protected function getModelById(){
+        //将类的命名空间赋值给一个变量$class,再通过new $class的方式实例化
         $class = '\app\modules\admin\models\\'.\Yii::$app->controller->id;
         $class = new $class();
         $model=$class->find()->where('status!=:status',[':status'=>-1])

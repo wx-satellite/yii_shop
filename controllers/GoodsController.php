@@ -3,6 +3,7 @@
 
 namespace app\controllers;
 use app\modules\admin\models\Goods;
+use app\services\SearchGoods;
 class GoodsController extends BaseController{
 
     public $layout='template';
@@ -20,5 +21,25 @@ class GoodsController extends BaseController{
 
     public function actionList(){
         return $this->render('list');
+    }
+
+
+    public function actionSearch(){
+        $hightlight=[
+            "pre_tags"=>['<span class="highlight">'],
+            "post_tags"=>['</span>'],
+            "fields"=>[
+                "name"=>new \stdClass(),
+                'descr'=>new \stdClass()
+            ]
+        ];
+        $key=\Yii::$app->request->get('keyword');
+        $res=SearchGoods::find()->query([
+            'multi_match'=>[
+                'query'=>$key,
+                "fields"=>['name','descr']
+            ]
+        ])->highlight($hightlight)->all();
+        return $this->render('search',compact('res'));
     }
 }

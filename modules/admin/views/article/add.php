@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Alert;
 $this->title='添加文章';
 $this->params['breadcrumbs']=[['label'=>'文章列表','url'=>['/admin/article/list']],['label'=>'添加文章']];
-$this->registerJsFile('/admin/js/wangEditor.min.js');
+$this->registerJsFile('/admin/js/wangEditor.min.js',['depends'=>'app\assets\AdminAsset']);
 ?>
             <!-- /Page Breadcrumb -->
 

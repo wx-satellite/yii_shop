@@ -27,7 +27,11 @@ $this->title='三斤宠物口粮';
     <link rel="stylesheet" href="/css/responsive.css">
     <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="/js/vendor/jquery-1.12.0.min.js"></script>
-
+    <style>
+        .highlight{
+            color:red;
+        }
+    </style>
 </head>
 <body>
 <header class="header-area">
@@ -101,12 +105,15 @@ $this->title='三斤宠物口粮';
                                 <i class="ti-close s-close"></i>
                             </button>
                             <div class="search-content">
-                                <form action="#">
-                                    <input type="text" placeholder="Search">
+                                <?php $form=\yii\bootstrap\ActiveForm::begin([
+                                        'action'=>yii\helpers\Url::to(['goods/search']),
+                                        'method'=>'get'
+                                ]);?>
+                                    <input type="text" placeholder="搜索商品" name="keyword">
                                     <button>
                                         <i class="icon-magnifier"></i>
                                     </button>
-                                </form>
+                                <?php \yii\bootstrap\ActiveForm::end();?>
                             </div>
                         </div>
                     <script>

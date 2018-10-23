@@ -50,7 +50,7 @@ $this->params['breadcrumbs']=[['label'=>'文章列表']];
                                         <tr>
                                             <td align="center"><?php echo $k+1;?></td>
                                             <td align="center"><?php echo $a->tag->name;?></td>
-                                            <td align="center"><a href="<?php echo yii\helpers\Url::to(['/article/detail','id'=>$a->id]);?>"><?php echo $a->title;?></a></td>
+                                            <td align="center"><a href="<?php echo yii\helpers\Url::to(['/article/detail','id'=>$a->id]);?>" target="_blank"><?php echo $a->title;?></a></td>
                                             <td align="center"><?php echo $a->author;?></td>
                                             <td align="center">
                                                 <?php if(Article::HIDDEN===(int)$a->status):?>
