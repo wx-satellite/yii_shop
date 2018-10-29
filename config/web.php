@@ -11,7 +11,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@alipay'=>'@vendor/alipay'
+        '@alipay'=>'@vendor/alipay',
     ],
     'defaultRoute'=>'index/index',
     'timeZone' => 'Asia/Shanghai',
@@ -19,6 +19,12 @@ $config = [
     'charset'=>'utf-8',
 //    'layoutPath'=>'..\views\layouts',
     'components' => [
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '119.23.70.61',
+            'port' => 6379,
+            'database' => 0,
+        ],
         'assetManager'=>[
             'class'=>'yii\web\AssetManager',
             'bundles'=>[
@@ -56,11 +62,13 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => 'sanjin\queue\Mailer',
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
 //            'useFileTransport' => true,
+            'db'=>1,
+            'key'=>'mailers',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.163.com',

@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Order.php';
+//require_once '../models/Order.php';
 return [
     'adminEmail' => 'admin@example.com',
     'session_expire_time'=>24*60*60,
@@ -14,11 +14,17 @@ return [
 
     ],
     'order_status'=>[
-        \app\models\Order::NOT_PAY=>'未支付',
-        \app\models\Order::NOT_POST=>'已支付，准备发货',
-        \app\models\Order::POST=>'已发货',
-        \app\models\Order::RECEIVER=>'已签收',
-        \app\models\Order::CANCEL=>'已取消',
-        \app\models\Order::DELETE=>'已删除'
+//        \app\models\Order::NOT_PAY=>'未支付',
+//        \app\models\Order::NOT_POST=>'已支付，准备发货',
+//        \app\models\Order::POST=>'已发货',
+//        \app\models\Order::RECEIVER=>'已签收',
+//        \app\models\Order::CANCEL=>'已取消',
+//        \app\models\Order::DELETE=>'已删除'
+        0=>'未支付',
+        1=>'已支付，准备发货',
+        2=>'已发货',
+        3=>'已签收',
+        4=>'已取消',
+        -1=>'已删除'
     ]
 ];

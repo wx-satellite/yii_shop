@@ -142,7 +142,7 @@ class User extends ActiveRecord{
             $mailer->setTo($this->email);
             $mailer->setSubject('重置密码邮件');
             try{
-                if(!$mailer->send()){
+                if(!$mailer->pushMailToRedis()){
                     \Yii::$app->getSession()->setFlash('Error','发送邮件异常，请稍后重试');
                     return false;
                 }

@@ -20,7 +20,9 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "crazyfd/yii2-qiniu": "dev-master",
         "dzer/yii2-express": "dev-master",
-        "yiisoft/yii2-elasticsearch": "~2.1.0"
+        "yiisoft/yii2-elasticsearch": "~2.1.0",
+        "yiisoft/yii2-redis": "~2.0.0",
+        "wxsatellite/queue-mailer": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -65,7 +67,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://asset-packagist.org"
+            "url": "https://packagist.phpcomposer.com"
         }
     ]
 }
