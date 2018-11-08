@@ -19,6 +19,9 @@ $config = [
     'charset'=>'utf-8',
 //    'layoutPath'=>'..\views\layouts',
     'components' => [
+        'kafka'=>[
+            'class'=>'app\services\Kafka',
+        ],
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => '119.23.70.61',
@@ -58,8 +61,9 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+        //自定义url错误处理
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'index/error',
         ],
         'mailer' => [
             'class' => 'sanjin\queue\Mailer',
@@ -72,7 +76,7 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.163.com',
-                'username' => '15658283276@163.com',
+                'username' => '15658283286@163.com',
                 'password' => 'abc123456',
                 'port' => '465',
                 'encryption' => 'ssl',
@@ -83,19 +87,24 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning']
                 ],
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'suffix'=>'.html',
             'rules' => [
+                'index'=>'index/index',
+                [
+                    'pattern'=>'sanjinback',
+                    'route'=>'/admin/index/index',
+                    'suffix'=>'.html'
+                ]
             ],
         ],
-        */
     ],
     'params' => $params,
     'modules'=>[
@@ -113,7 +122,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+//        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';

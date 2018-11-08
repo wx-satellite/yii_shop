@@ -32,7 +32,9 @@ tests/_support/_generated
 #vagrant folder
 /.vagrant
 
+/runtime
 
 yii笔记.txt
 yii.sql
 yii2高级笔记.txt
+索引存储格式.png

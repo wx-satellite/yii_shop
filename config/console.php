@@ -11,8 +11,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@tests' => '@app/tests',
-        '@redismailer'=>'@vendor/redismailer'
+        '@tests' => '@app/tests'
     ],
     'components' => [
         'redis' => [
@@ -22,7 +21,7 @@ $config = [
             'database' => 0,
         ],
         'mailer' => [
-            'class' => 'redismailer\src\Mailer',
+            'class' => 'sanjin\queue\Mailer',
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.

@@ -56,7 +56,7 @@ AdminAsset::register($this);
                             <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                 <li class="username"><a>David Stevenson</a></li>
                                 <li class="dropdown-footer">
-                                    <a href="/admin/user/logout.html">
+                                    <a href="<?php echo \yii\helpers\Url::to(['login/logout']);?>">
                                         退出登录
                                     </a>
                                 </li>

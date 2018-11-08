@@ -74,7 +74,7 @@ class Cart extends  ActiveRecord{
             }elseif('all'===$flag){
                 $cart=[];
             }
-            setcookie('cart',serialize($cart),time()+\Yii::$app->params['cart_expire_time']);
+            setcookie('cart',serialize($cart),time()+\Yii::$app->params['cart_expire_time'],'/');
             return true;
         }
     }
@@ -121,7 +121,7 @@ class Cart extends  ActiveRecord{
                         $cart[$this->goods_id]=$this->count;
                     }
                 }
-                setcookie('cart',serialize($cart),time()+\Yii::$app->params['cart_expire_time']);
+                setcookie('cart',serialize($cart),time()+\Yii::$app->params['cart_expire_time'],'/');
                 return ['success'=>1,'message'=>'添加购物车成功','count'=>$this->count];
             }
         }else{

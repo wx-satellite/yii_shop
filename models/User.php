@@ -207,7 +207,7 @@ class User extends ActiveRecord{
                     $c->save(false);
                 }
             }
-            setcookie('cart',serialize([]),\Yii::$app->params['cart_expire_time']);
+            setcookie('cart',serialize([]),\Yii::$app->params['cart_expire_time'],'/');
             return true;
         }catch(\Exception $e){
             return false;
@@ -216,7 +216,7 @@ class User extends ActiveRecord{
     protected function saveUserInfoToSession($user){
         $expire_time = (bool)$this->remember_me?\Yii::$app->params['session_expire_time']:null;
         $session=\Yii::$app->session;
-        setcookie(session_name(),session_id(),$expire_time?time()+$expire_time:$expire_time);
+        setcookie(session_name(),session_id(),$expire_time?time()+$expire_time:$expire_time,'/');
         $session['user']=[
             'uid'=>$user->id,
             'username'=>$user->username
