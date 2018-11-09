@@ -19,9 +19,6 @@ $config = [
     'charset'=>'utf-8',
 //    'layoutPath'=>'..\views\layouts',
     'components' => [
-        'kafka'=>[
-            'class'=>'app\services\Kafka',
-        ],
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => '119.23.70.61',
@@ -55,7 +52,12 @@ $config = [
             'cookieValidationKey' => 'EFOVr_elAOuet2b21ZL8cHfyM7AD2UYr',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\redis\Cache',
+            'redis'=>[
+                'hostname' => '119.23.70.61',
+                'port' => 6379,
+                'database' => 2,
+            ]
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -76,7 +78,7 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.163.com',
-                'username' => '15658283286@163.com',
+                'username' => '15658283276@163.com',
                 'password' => 'abc123456',
                 'port' => '465',
                 'encryption' => 'ssl',

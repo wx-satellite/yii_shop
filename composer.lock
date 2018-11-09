@@ -357,19 +357,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wx-satellite/test-mailerqueue.git",
-                "reference": "224f80f38d1bc6e83b03141b571bde048db49d74"
+                "reference": "ccf5aabd4b3aa5d65fe26a1be006cd9ed6fd6b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wx-satellite/test-mailerqueue/zipball/224f80f38d1bc6e83b03141b571bde048db49d74",
-                "reference": "224f80f38d1bc6e83b03141b571bde048db49d74",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/wx-satellite/test-mailerqueue/zipball/ccf5aabd4b3aa5d65fe26a1be006cd9ed6fd6b2f",
+                "reference": "ccf5aabd4b3aa5d65fe26a1be006cd9ed6fd6b2f",
+                "shasum": ""
             },
             "require": {
                 "yiisoft/yii2": "*",
@@ -397,7 +391,7 @@
                 "yii2",
                 "邮件"
             ],
-            "time": "2018-10-28T15:00:22+00:00"
+            "time": "2018-11-08T14:00:46+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -2183,43 +2177,6 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2016-02-11T07:05:27+00:00"
-        },
-        {
-            "name": "sanjin/redismailer",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wx-satellite/redismailer.git",
-                "reference": "13c060ef8d228277740e1ada405356972d563a3b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wx-satellite/redismailer/zipball/13c060ef8d228277740e1ada405356972d563a3b",
-                "reference": "13c060ef8d228277740e1ada405356972d563a3b",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-redis": "~2.0.0"
-            },
-            "type": "yii-extension",
-            "autoload": {
-                "psr-4": {
-                    "redismailer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "三斤和他的喵",
-                    "email": "1453085314@qq.com"
-                }
-            ],
-            "description": "基于redis的邮件队列",
-            "time": "2018-10-26T14:53:19+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
