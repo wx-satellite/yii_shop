@@ -60,7 +60,7 @@ use yii\bootstrap\Alert;
                                     <?php echo $form->field($model,'password')->passwordInput(['placeholder'=>'密码']);?>
                                     <div class="button-box">
                                     <?php echo $form->field($model,'remember_me')->label('　记住我')->checkbox([
-                                        'template'=>'<div class="login-toggle-btn">{input}{label}<a href="/index.php?r=login/seek-password">忘记密码？</a>
+                                        'template'=>'<div class="login-toggle-btn">{input}{label}<a href="/login/seek-password.html">忘记密码？</a>
                                             </div>'
                                     ]);?>
                                         <?php echo Html::submitButton('登录');?>

@@ -11,10 +11,15 @@ class UserController extends BaseController {
 
     //判断是否登录
     protected function checkIsLogin(){
-        if(!isset(\Yii::$app->session['user'])){
+//        if(!isset(\Yii::$app->session['user'])){
+//            $this->redirect(['login/login']);
+//            \Yii::$app->end();
+//        }
+        if(\Yii::$app->user->isGuest){
             $this->redirect(['login/login']);
             \Yii::$app->end();
         }
+        return true;
     }
 
 
@@ -22,7 +27,7 @@ class UserController extends BaseController {
     public function actionInfo(){
         $this->checkIsLogin();
         //根据session中的uid查询到当前用户
-        $user=User::find()->where('id=:id',[':id'=>\Yii::$app->session['user']['uid']])->one();
+        $user=User::find()->where('id=:id',[':id'=>\Yii::$app->user->id])->one();
         //如果用户对应的信息存在就返回profile，如果不存在则实例化一个profile
         $profile=$user->profile?:new UserProfile();
         if(\Yii::$app->request->isPost){
@@ -40,7 +45,7 @@ class UserController extends BaseController {
     //修改密码
     public function actionChangePassword(){
         $this->checkIsLogin();
-        $user=User::find()->where('id=:id',[':id'=>\Yii::$app->session['user']['uid']])->one();
+        $user=User::find()->where('id=:id',[':id'=>\Yii::$app->user->id])->one();
         $profile=$user->profile?:new UserProfile();
         if(\Yii::$app->request->isPost){
             $post = \Yii::$app->request->post();
@@ -56,7 +61,7 @@ class UserController extends BaseController {
     //修改邮箱
     public function actionChangeEmail(){
         $this->checkIsLogin();
-        $user=User::find()->where('id=:id',[':id'=>\Yii::$app->session['user']['uid']])->one();
+        $user=User::find()->where('id=:id',[':id'=>\Yii::$app->user->id])->one();
         $profile=$user->profile?:new UserProfile();
         if(\Yii::$app->request->isPost){
             $post = \Yii::$app->request->post();

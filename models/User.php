@@ -4,10 +4,35 @@
 namespace app\models;
 use yii\db\ActiveRecord;
 
-class User extends ActiveRecord{
+class User extends ActiveRecord implements \yii\web\IdentityInterface{
     public $remember_me;
     public $repassword;
     public $account;
+
+    public static function findIdentity($id)
+    {
+        return self::find()->where(['status'=>1,'id'=>$id])->one();
+    }
+
+    public  function getId(){
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        // TODO: Implement getAuthKey() method.
+    }
+    public function validateAuthKey($authKey)
+    {
+        // TODO: Implement validateAuthKey() method.
+    }
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        // TODO: Implement findIdentityByAccessToken() method.
+    }
+
+
+
 
     public static function tableName()
     {
@@ -50,7 +75,7 @@ class User extends ActiveRecord{
     }
     //声明关联
     public function getProfile(){
-        return $this->hasOne(UserProfile::class,['uid'=>'id']);
+        return $this->hasOne(UserProfile::className(),['uid'=>'id']);
     }
 
     //修改邮箱
@@ -58,7 +83,7 @@ class User extends ActiveRecord{
         $this->scenario='change-email';
         if($this->load($post)&&$this->validate()){
             try{
-                self::updateAll(['email'=>$this->email],'id=:id',[':id'=>\Yii::$app->session['user']['uid']]);
+                self::updateAll(['email'=>$this->email],'id=:id',[':id'=>\Yii::$app->user->id]);
                 \Yii::$app->session->setFlash('Success','修改邮箱成功');
                 return true;
             }catch(\Exception $e){
@@ -97,7 +122,7 @@ class User extends ActiveRecord{
             if($this->load($post) && $this->validate()){
                 //没有token表示通过个人主页的方式重置密码
                 try{
-                    self::updateAll(['password'=>md5($this->password)],'id=:id',[':id'=>\Yii::$app->session['user']['uid']]);
+                    self::updateAll(['password'=>md5($this->password)],'id=:id',[':id'=>\Yii::$app->user->id]);
                     \Yii::$app->getSession()->setFlash('Success','重置密码成功');
                     return true;
                 }catch(\Exception $e){
@@ -176,8 +201,15 @@ class User extends ActiveRecord{
                 $this->addError('password','用户名或者邮箱或者密码错误');
                 return;
             }
+
+
             //说明账号和密码正确，将用户信息存入session
-            $this->saveUserInfoToSession($user);
+//            $this->saveUserInfoToSession($user);
+
+            //使用user组件
+            \Yii::$app->user->login($user,(bool)$this->remember_me?\Yii::$app->params['session_expire_time']:0);
+
+
             //更新登录时间和ip地址
             $this->updateLoginTimeAndIp($user);
             //将cookie中的购物车信息存入数据库并清空cookie
@@ -214,7 +246,7 @@ class User extends ActiveRecord{
         }
     }
     protected function saveUserInfoToSession($user){
-        $expire_time = (bool)$this->remember_me?\Yii::$app->params['session_expire_time']:null;
+        $expire_time = (bool)$this->remember_me?\Yii::$app->params['session_expire_time']:0;
         $session=\Yii::$app->session;
         setcookie(session_name(),session_id(),$expire_time?time()+$expire_time:$expire_time,'/');
         $session['user']=[
