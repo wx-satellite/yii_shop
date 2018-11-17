@@ -46,7 +46,7 @@ class UserProfile extends ActiveRecord{
             //不存在uid说明是第一次填写基本信息属于新增操作
             //存在uid说明是更新操作
             if(!isset($this->uid)){
-                $this->uid=\Yii::$app->session['user']['uid'];
+                $this->uid=\Yii::$app->user->id;
             }
             try{
                 $this->save(false);

@@ -112,7 +112,7 @@ class Order extends ActiveRecord{
     }
     //删除购物车表的数据
     protected function deleteCart(){
-        Cart::updateAll(['status'=>-1],['uid'=>\Yii::$app->session['user']['uid']]);
+        Cart::updateAll(['status'=>-1],['uid'=>\Yii::$app->user->id]);
         return true;
     }
     //检验库存量
@@ -159,7 +159,7 @@ class Order extends ActiveRecord{
             $this->goods_total_price=$goods_price;
             $this->order_total_price=$goods_price+$this->post_price;
             $this->orderno=$this->build_order_no();
-            $this->uid = \Yii::$app->session['user']['uid'];
+            $this->uid = \Yii::$app->user->id;
             try{
                 $trans = \Yii::$app->db->beginTransaction();
                 $this->save(false);

@@ -48,7 +48,7 @@ class Cart extends  ActiveRecord{
             if('one'===$flag){
                 try{
                     //删除单条记录
-                    self::updateAll(['status'=>-1],['goods_id'=>$goods_id,'uid'=>\Yii::$app->session['user']['uid']]);
+                    self::updateAll(['status'=>-1],['goods_id'=>$goods_id,'uid'=>\Yii::$app->user->id]);
                     return true;
                 }catch (\Exception $e){
                     return false;
@@ -56,7 +56,7 @@ class Cart extends  ActiveRecord{
             }elseif('all'===$flag){
                 try{
                     //删除单条记录
-                    self::updateAll(['status'=>-1],['uid'=>\Yii::$app->session['user']['uid']]);
+                    self::updateAll(['status'=>-1],['uid'=>\Yii::$app->user->id]);
                     return true;
                 }catch (\Exception $e){
                     return false;
@@ -88,7 +88,7 @@ class Cart extends  ActiveRecord{
             if(User::checkUserLoginIn()){
                 //如果用户登陆了，将数据添加到数据库
                 try{
-                    $uid = \Yii::$app->session['user']['uid'];
+                    $uid = \Yii::$app->user->id;
                     $cart = self::find()->where(['status'=>1,'uid'=>$uid,'goods_id'=>$this->goods_id])->one();
                     if($cart){
                         $cart->count=$this->count+$cart->count;
@@ -133,7 +133,7 @@ class Cart extends  ActiveRecord{
     public function getCartInfo(){
         if(User::checkUserLoginIn()){
             //如果用户登陆，从数据库中取出
-            $res = self::find()->select('goods_id,count')->where(['status'=>1,'uid'=>\Yii::$app->session['user']['uid']])->all();
+            $res = self::find()->select('goods_id,count')->where(['status'=>1,'uid'=>\Yii::$app->user->id])->all();
             if(!$res){
                 return [];
             }else{

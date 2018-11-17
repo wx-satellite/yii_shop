@@ -224,7 +224,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface{
         if(!$cart){
             return true;
         }
-        $uid = \Yii::$app->session['user']['uid'];
+        $uid = \Yii::$app->user->id;
         try{
             foreach($cart as $k=>$v){
                 $c = Cart::find()->where(['goods_id'=>$k,'uid'=>$uid,'status'=>1])->one();
