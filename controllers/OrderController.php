@@ -10,6 +10,10 @@ use app\services\Pay;
 use dzer\express\Express;
 class OrderController extends  BaseController{
 
+
+
+
+
     public $layout='template';
 
     public function actionPay(){
@@ -35,7 +39,7 @@ class OrderController extends  BaseController{
             echo $script;
             \Yii::$app->end();
         }
-        $user = UserProfile::find()->select('last_name,first_name,address,phone')->where(['uid'=>\Yii::$app->session['user']['uid']])->one();
+        $user = UserProfile::find()->select('last_name,first_name,address,phone')->where(['uid'=>\Yii::$app->user->id])->one();
         $cart = (new Cart())->getCartInfo();
         if(!$cart){
             $script="<script>alert('想再来一单吗？那就去首页看看吧。');window.location.href='/index.php?r=index/index';</script>";
@@ -61,14 +65,14 @@ class OrderController extends  BaseController{
 
     //我的订单（除去删除的）
     public function actionMyOrder(){
-        if(!User::checkUserLoginIn()){
-            $this->redirect(['login/login']);
-            \Yii::$app->getSession()->setFlash('Error','请先登录');
-            \Yii::$app->end();
-        }
+//        if(!User::checkUserLoginIn()){
+//            $this->redirect(['login/login']);
+//            \Yii::$app->getSession()->setFlash('Error','请先登录');
+//            \Yii::$app->end();
+//        }
         $orders = Order::find()
             ->where('status!=:status',[':status'=>Order::DELETE])
-            ->andWhere(['uid'=>\Yii::$app->session['user']['uid']])
+            ->andWhere(['uid'=>\Yii::$app->user->id])
             ->orderBy(['create_time'=>SORT_DESC])
             ->all();
         return $this->render('my',compact('orders'));
@@ -77,7 +81,7 @@ class OrderController extends  BaseController{
     //取消订单（只能取消下单未支付的订单）
     public function actionCancel(){
         $order = Order::find()->where(['status'=>Order::NOT_PAY])
-            ->andWhere(['uid'=>\Yii::$app->session['user']['uid'],'id'=>\Yii::$app->request->get('id')])
+            ->andWhere(['uid'=>\Yii::$app->user->id,'id'=>\Yii::$app->request->get('id')])
             ->one();
         if(!$order){
             \Yii::$app->getSession()->setFlash('Error','取消订单，请稍后重试');
@@ -99,7 +103,7 @@ class OrderController extends  BaseController{
     //确认收货（当订单状态为Order::POST时才能确认收货）
     public function actionReceive(){
         $order = Order::find()->where(['status'=>Order::POST,'id'=>\Yii::$app->request->get('id')])
-            ->andWhere(['uid'=>\Yii::$app->session['user']['uid']])->one();
+            ->andWhere(['uid'=>\Yii::$app->user->id])->one();
         if(!$order){
             \Yii::$app->getSession()->setFlash('Error','确认收货失败，请重试');
             $this->redirect(['order/my-order']);
@@ -118,7 +122,7 @@ class OrderController extends  BaseController{
     //查看物流信息（当订单状态为Order::POST时才能查看物流信息）
     public function actionExpress(){
         $order = Order::find()->where(['status'=>Order::POST,'id'=>\Yii::$app->request->get('id')])
-            ->andWhere(['uid'=>\Yii::$app->session['user']['uid']])->one();
+            ->andWhere(['uid'=>\Yii::$app->user->id])->one();
         if(!$order){
             \Yii::$app->getSession()->setFlash('Error','查询物流信息失败');
             $this->redirect(['order/my-order']);

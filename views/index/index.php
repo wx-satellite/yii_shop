@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12 col-sm-5">
                         <div class="slider-single-img slider-animated-1">
-                            <img class="animated" src="/assets/img/slider/slider-single-img.png" alt="">
+                            <img class="animated" src="/img/slider/slider-single-img.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-5 col-12">
                         <div class="slider-single-img slider-animated-1">
-                            <img class="animated" src="/assets/img/slider/slider-single-img-2.png" alt="">
+                            <img class="animated" src="/img/slider/slider-single-img-2.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
             <div class="col-lg-4 col-md-4">
                 <div class="single-food-category cate-padding-1 text-center mb-30">
                     <div class="single-food-hover-2">
-                        <img src="/assets/img/product/product-1.jpg" alt="">
+                        <img src="/img/product/product-1.jpg" alt="">
                     </div>
                     <div class="single-food-content">
                         <h3>狗粮</h3>
@@ -59,7 +59,7 @@
             <div class="col-lg-4 col-md-4">
                 <div class="single-food-category cate-padding-2 text-center mb-30">
                     <div class="single-food-hover-2">
-                        <img src="/assets/img/product/product-2.jpg" alt="">
+                        <img src="/img/product/product-2.jpg" alt="">
                     </div>
                     <div class="single-food-content">
                         <h3>猫粮</h3>
@@ -69,7 +69,7 @@
             <div class="col-lg-4 col-md-4">
                 <div class="single-food-category cate-padding-3 text-center mb-30">
                     <div class="single-food-hover-2">
-                        <img src="/assets/img/product/product-3.jpg" alt="">
+                        <img src="/img/product/product-3.jpg" alt="">
                     </div>
                     <div class="single-food-content">
                         <h3>鱼粮</h3>
@@ -135,7 +135,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="deal-img wow fadeInLeft">
-                    <a href="#"><img src="/assets/img/banner/banner-2.png" alt=""></a>
+                    <a href="#"><img src="/img/banner/banner-2.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -163,21 +163,21 @@
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="service-content text-center mb-30 service-color-1">
-                    <img src="/assets/img/icon-img/shipping.png" alt="">
+                    <img src="/img/icon-img/shipping.png" alt="">
                     <h4>免运费</h4>
                     <p>确认订单的时候，选择自送即可免邮费</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="service-content text-center mb-30 service-color-2">
-                    <img src="/assets/img/icon-img/support.png" alt="">
+                    <img src="/img/icon-img/support.png" alt="">
                     <h4>在线支持</h4>
                     <p>全天候24小时，营业开张</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="service-content text-center mb-30 service-color-3">
-                    <img src="/assets/img/icon-img/money.png" alt="">
+                    <img src="/img/icon-img/money.png" alt="">
                     <h4>售后服务</h4>
                     <p>支持7天无理由退货</p>
                 </div>
@@ -195,7 +195,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="blog-wrapper mb-30 gray-bg">
                     <div class="blog-img hover-effect">
-                        <a href="blog-details.html"><img alt="" src="/assets/img/blog/blog-1.jpg"></a>
+                        <a href="blog-details.html"><img alt="" src="/img/blog/blog-1.jpg"></a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -211,7 +211,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="blog-wrapper mb-30 gray-bg">
                     <div class="blog-img hover-effect">
-                        <a href="blog-details.html"><img alt="" src="/assets/img/blog/blog-2.jpg"></a>
+                        <a href="blog-details.html"><img alt="" src="/img/blog/blog-2.jpg"></a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -227,7 +227,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="blog-wrapper mb-30 gray-bg">
                     <div class="blog-img hover-effect">
-                        <a href="blog-details.html"><img alt="" src="/assets/img/blog/blog-3.jpg"></a>
+                        <a href="blog-details.html"><img alt="" src="/img/blog/blog-3.jpg"></a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">

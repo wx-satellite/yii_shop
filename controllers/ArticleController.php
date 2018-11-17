@@ -4,6 +4,7 @@ namespace app\controllers;
 use app\modules\admin\models\Article;
 class ArticleController extends BaseController{
 
+
     public function actionList(){
         return $this->render('list');
     }

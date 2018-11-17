@@ -59,10 +59,14 @@ $config = [
                 'database' => 2,
             ]
         ],
+        'admin'=>[
+            'class'=>'app\models\Cart'
+        ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+
         //自定义url错误处理
         'errorHandler' => [
             'errorAction' => 'index/error',

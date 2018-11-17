@@ -68,10 +68,10 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface{
         ];
     }
     public static function checkUserLoginIn(){
-        if(isset(\Yii::$app->session['user'])){
-            return true;
+        if(\Yii::$app->user->isGuest){
+            return false;
         }
-        return false;
+        return true;
     }
     //声明关联
     public function getProfile(){

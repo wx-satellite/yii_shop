@@ -1,5 +1,5 @@
 
-<div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(assets/img/banner/banner-2.jpg);">
+<div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/img/banner/banner-2.jpg);">
     <div class="container">
         <div class="breadcrumb-content text-center">
             <h2>Shop Page</h2>
@@ -39,10 +39,11 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-4.jpg" alt="">
+                                            <img src="/img/product/product-4.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+
                                                 <i class="ti-plus"></i>
                                             </a>
                                             <a title="Add To Cart" href="#">
@@ -84,7 +85,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-5.jpg" alt="">
+                                            <img src="/img/product/product-5.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -129,7 +130,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-6.jpg" alt="">
+                                            <img src="/img/product/product-6.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -174,7 +175,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-7.jpg" alt="">
+                                            <img src="/img/product/product-7.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -219,7 +220,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-8.jpg" alt="">
+                                            <img src="/img/product/product-8.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -264,7 +265,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-9.jpg" alt="">
+                                            <img src="/img/product/product-9.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -309,7 +310,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-10.jpg" alt="">
+                                            <img src="/img/product/product-10.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -354,7 +355,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-11.jpg" alt="">
+                                            <img src="/img/product/product-11.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
@@ -399,7 +400,7 @@
                                 <div class="product-wrapper mb-10">
                                     <div class="product-img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/product/product-4.jpg" alt="">
+                                            <img src="/img/product/product-4.jpg" alt="">
                                         </a>
                                         <div class="product-action">
                                             <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
