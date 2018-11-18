@@ -13,6 +13,10 @@ class LoginController extends BaseController {
 
     //账号登录
     public function actionLogin(){
+        if(!\Yii::$app->user->isGuest){
+            $this->redirect(['user/info']);
+            \Yii::$app->end();
+        }
         $model = new User();
         if(\Yii::$app->request->isPost){
             $post = \Yii::$app->request->post();

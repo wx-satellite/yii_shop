@@ -9,8 +9,7 @@ class LoginController extends Controller{
     public $layout=false;
 
     public function actionLogin(){
-        var_dump($_SESSION);
-        if(isset(Yii::$app->session['admin'])){
+        if(!\Yii::$app->admin->isGuest){
             $this->goBack(\yii\helpers\Url::to(['index/index']));
             Yii::$app->end();
         }
