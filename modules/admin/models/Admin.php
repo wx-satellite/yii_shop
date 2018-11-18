@@ -5,7 +5,32 @@ namespace app\modules\admin\models;
 
 use yii\db\ActiveRecord;
 
-class Admin extends ActiveRecord{
+class Admin extends ActiveRecord implements \yii\web\IdentityInterface{
+
+    public static function findIdentity($id)
+    {
+        return self::find()->where(['status'=>1,'id'=>$id])->one();
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        // TODO: Implement findIdentityByAccessToken() method.
+    }
+
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function validateAuthKey($authKey)
+    {
+        // TODO: Implement validateAuthKey() method.
+    }
+
 
     public $remember_me;
     public $repassword;
@@ -51,7 +76,11 @@ class Admin extends ActiveRecord{
                 return;
             }
             //将用户信息存入session
-            $this->saveAdminInfoToSession($admin);
+//            $this->saveAdminInfoToSession($admin);
+            $lifetime=$this->remember_me?\Yii::$app->getModule('admin')->params['session_life_time']:0;
+            \Yii::$app->admin->login($admin,$lifetime?:$lifetime);
+
+
             //更新登录时间与登录ip
             $this->updateAdminLoginTimeAndIp($admin);
         }
@@ -165,7 +194,16 @@ class Admin extends ActiveRecord{
     }
 
 
-
+    public function beforeSave($insert)
+    {
+        if(parent::beforeSave($insert)){
+            if($this->isNewRecord){
+                $this->auth_key=\Yii::$app->security->generateRandomString();
+            }
+            return true;
+        }
+        return false;
+    }
 
 
 

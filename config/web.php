@@ -60,7 +60,11 @@ $config = [
             ]
         ],
         'admin'=>[
-            'class'=>'app\models\Cart'
+            'class'=>'yii\web\User',
+            'identityClass'=>'app\modules\admin\models\Admin',
+            'enableAutoLogin'=>true,
+            'idParam'=>'__admin_id',
+            'identityCookie'=>['name' => '_admin_identity', 'httpOnly' => true]
         ],
         'user' => [
             'identityClass' => 'app\models\User',

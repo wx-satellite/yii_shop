@@ -27,7 +27,7 @@ class LoginController extends BaseController {
     //账号退出
     public function actionLogout(){
 //        \Yii::$app->session->remove('user');
-        \Yii::$app->user->logout();
+        \Yii::$app->user->logout(false);
         $this->goBack(\Yii::$app->request->referrer);
         \Yii::$app->end();
     }

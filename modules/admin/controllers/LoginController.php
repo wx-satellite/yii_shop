@@ -9,6 +9,7 @@ class LoginController extends Controller{
     public $layout=false;
 
     public function actionLogin(){
+        var_dump($_SESSION);
         if(isset(Yii::$app->session['admin'])){
             $this->goBack(\yii\helpers\Url::to(['index/index']));
             Yii::$app->end();
@@ -27,13 +28,16 @@ class LoginController extends Controller{
 
 
     public function actionLogout(){
+        \Yii::$app->admin->logout(false);
+        $this->redirect(['login/login']);
+        Yii::$app->end();
         //清除session
-        Yii::$app->session->removeAll();
-        if(!isset(Yii::$app->session['admin'])){
-            $this->redirect(['login/login']);
-            Yii::$app->end();
-        }
-        //若清除session失败跳回原来的地址
-        $this->redirect(Yii::$app->request->referrer);
+//        Yii::$app->session->removeAll();
+//        if(!isset(Yii::$app->session['admin'])){
+//            $this->redirect(['login/login']);
+//            Yii::$app->end();
+//        }
+//        //若清除session失败跳回原来的地址
+//        $this->redirect(Yii::$app->request->referrer);
     }
 }
