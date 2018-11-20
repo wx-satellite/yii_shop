@@ -14,6 +14,13 @@ $config = [
         '@tests' => '@app/tests'
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'itemTable' => '{{%auth_item}}',
+            'itemChildTable' => '{{%auth_item_child}}',
+            'assignmentTable' => '{{%auth_assignment}}',
+            'ruleTable' => '{{%auth_rule}}'
+        ],
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => '119.23.70.61',

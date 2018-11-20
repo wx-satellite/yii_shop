@@ -64,11 +64,13 @@ $config = [
             'identityClass'=>'app\modules\admin\models\Admin',
             'enableAutoLogin'=>true,
             'idParam'=>'__admin_id',
-            'identityCookie'=>['name' => '_admin_identity', 'httpOnly' => true]
+            'identityCookie'=>['name' => '_admin_identity', 'httpOnly' => true],
+            'loginUrl'=>['admin/login/login']
         ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'loginUrl'=>['login/login']
         ],
 
         //自定义url错误处理

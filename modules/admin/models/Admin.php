@@ -28,7 +28,7 @@ class Admin extends ActiveRecord implements \yii\web\IdentityInterface{
     }
     public function validateAuthKey($authKey)
     {
-        // TODO: Implement validateAuthKey() method.
+        return $this->auth_key===$authKey;
     }
 
 

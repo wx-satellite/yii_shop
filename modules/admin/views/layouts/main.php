@@ -49,7 +49,7 @@ AdminAsset::register($this);
                                     <img src="/admin/images/header.jpg">
                                 </div>
                                 <section>
-                                    <h2><span class="profile"><span>admin</span></span></h2>
+                                    <h2><span class="profile"><span><?php echo \Yii::$app->admin->identity->username;?></span></span></h2>
                                 </section>
                             </a>
                             <!--Login Area Dropdown-->

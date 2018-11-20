@@ -32,7 +32,7 @@ class LoginController extends BaseController {
     public function actionLogout(){
 //        \Yii::$app->session->remove('user');
         \Yii::$app->user->logout(false);
-        $this->goBack(\Yii::$app->request->referrer);
+        $this->redirect(['login/login']);
         \Yii::$app->end();
     }
 
