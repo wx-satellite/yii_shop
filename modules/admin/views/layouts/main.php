@@ -114,7 +114,24 @@ AdminAsset::register($this);
                 </li>
                 <li>
                     <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-user"></i>
+                        <i class="menu-icon fa fa-th-large"></i>
+                        <span class="menu-text">权限管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="<?php echo \yii\helpers\Url::to(['rbac/role-list']);?>">
+                                    <span class="menu-text">
+                                        角色列表                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-users"></i>
                         <span class="menu-text">用户管理</span>
                         <i class="menu-expand"></i>
                     </a>

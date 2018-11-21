@@ -24,7 +24,14 @@ class CommonController extends Controller{
         return $model;
     }
 
-
+    //post参数获取
+    public function post($name,$default=''){
+        return \Yii::$app->request->post($name,$default);
+    }
+    //get参数获取
+    public function get($name,$default=''){
+        return \Yii::$app->request->get($name,$default);
+    }
 
     //修改前端显示状态
     public function actionChangeStatus(){
