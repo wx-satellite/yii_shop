@@ -1,10 +1,9 @@
 <?php
 
 namespace app\modules\admin\controllers;
-use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Order;
-class OrderController extends Controller{
+class OrderController extends CommonController {
     public $layout='main';
 
 

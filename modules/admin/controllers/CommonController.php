@@ -9,6 +9,31 @@ class CommonController extends Controller{
 
     public $layout='main';
 
+
+    //检测当前用户是否有访问权限
+    public function beforeAction($action)
+    {
+        //先调用一个父类的，如果返回false就没必要继续了
+        //注意init中是获取不到\Yii::$app->controller->action
+        if(!parent::beforeAction($action)){
+            return false;
+        }
+        $controller=$action->controller->id;
+        $action=$action->id;
+        if(\Yii::$app->admin->can($controller.'/*')){
+            return true;
+        }
+        if(\Yii::$app->admin->can($controller.'/'.$action)){
+            return true;
+        }
+        if(\Yii::$app->request->isAjax){
+            echo json_encode(['errorCode'=>1,'msg'=>'对不起，您没有权限访问～']);exit;
+        }else{
+            $refer=\Yii::$app->request->referrer;
+            echo "<script>alert('对不起，您没有权限访问～');window.location.href='{$refer}';</script>";exit;
+        }
+    }
+
     //判断传入的id是否合法
     protected function getModelById(){
         //将类的命名空间赋值给一个变量$class,再通过new $class的方式实例化

@@ -1,10 +1,9 @@
 <?php
 
 namespace app\modules\admin\controllers;
-use yii\web\Controller;
 use app\modules\admin\models\Admin;
 use Yii;
-class PasswordController extends Controller{
+class PasswordController extends CommonController {
 
     public $layout=false;
 

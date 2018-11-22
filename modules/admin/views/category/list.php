@@ -12,7 +12,7 @@ $this->params['breadcrumbs']=[['label'=>'分类列表']];
             <!-- Page Body -->
             <div class="page-body">
 
-                <button type="button" tooltip="添加分类" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '/index.php?r=admin/category/add'"> <i class="fa fa-plus"></i> 添加分类
+                <button type="button" tooltip="添加分类" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo \yii\helpers\Url::to(['category/add']);?>'"> <i class="fa fa-plus"></i> 添加分类
                 </button>
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-xs-12">

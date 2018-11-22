@@ -1,11 +1,10 @@
 <?php
 
 namespace app\modules\admin\controllers;
-use yii\web\Controller;
 use app\modules\admin\models\Goods;
 use app\modules\admin\models\Category;
 use yii\data\Pagination;
-class GoodsController extends Controller{
+class GoodsController extends CommonController {
 
     public $layout='main';
 

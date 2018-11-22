@@ -1,10 +1,9 @@
 <?php
 
 namespace app\modules\admin\controllers;
-use yii\web\Controller;
 use app\modules\admin\models\Category;
 
-class CategoryController extends Controller{
+class CategoryController extends CommonController {
 
     public $layout='main';
 
