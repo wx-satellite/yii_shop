@@ -50,6 +50,7 @@ $this->params['breadcrumbs']=[['label'=>'管理员列表']];
                                     <td align="center"><?php echo long2ip($manager->loginip);?></td>
                                     <td align="center"><?php echo $manager->last_login_time;?></td>
                                     <td align="center">
+                                        <a href="<?php echo \yii\helpers\Url::to(['manager/grant','id'=>$manager->id]);?>" class="btn btn-success btn-sm shiny"><i class="fa fa-plus-square"></i>授权</a>
                                         <a href="/admin/user/edit/id/6.html" class="btn btn-primary btn-sm shiny">
                                             <i class="fa fa-edit"></i> 编辑
                                         </a>

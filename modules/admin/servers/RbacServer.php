@@ -10,7 +10,10 @@ class RbacServer{
     public static function makeCheckboxValue($items,$current){
         $res=[];
         foreach ($items as $item){
-            if($current->name!=$item->name && \Yii::$app->authManager->canAddChild($current,$item)){
+            if(!empty($current)&&$current->name!=$item->name && \Yii::$app->authManager->canAddChild($current,$item)){
+                $res[$item->name]=$item->description;
+            }
+            if(empty($current)){
                 $res[$item->name]=$item->description;
             }
         }
@@ -65,5 +68,52 @@ class RbacServer{
             }
         }
         return [$roles,$p];
+    }
+
+    //授权
+    public static function grant($manager,$children){
+        $auth=\Yii::$app->authManager;
+        $trans=\Yii::$app->db->beginTransaction();
+        try{
+            //取消当前所有的授权
+            $auth->revokeAll($manager->id);
+            //授权
+            foreach($children as $child){
+                $item=$auth->getRole($child);
+                $item=$item?:$auth->getPermission($child);
+                if(empty($item)){
+                    \Yii::$app->session->setFlash('Error','参数错误～');
+                    return false;
+                }
+                $auth->assign($item,$manager->id);
+            }
+            $trans->commit();
+            \Yii::$app->session->setFlash('Success','授权成功了～');
+            return true;
+        }catch (\Exception $e){
+            $trans->rollBack();
+            \Yii::$app->session->setFlash('Error','授权失败了～');
+            return false;
+        }
+
+    }
+
+    //根据类型获得对应的授权信息
+    protected static function getRolesOrPermissionByAid($aid,$type=1){
+        $auth=\Yii::$app->authManager;
+        $func='getPermissionsByUser';
+        if($type==2){
+            $func='getRolesByUser';
+        }
+        $items = $auth->$func($aid);
+        $res=[];
+        foreach ($items as $item){
+            $res[]=$item->name;
+        }
+        return $res;
+    }
+    //获取授权信息
+    public static function getGrantInfo($admin){
+        return [self::getRolesOrPermissionByAid($admin->id,2),self::getRolesOrPermissionByAid($admin->id)];
     }
 }

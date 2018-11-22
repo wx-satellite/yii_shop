@@ -1,12 +1,11 @@
 <?php
 
 namespace app\modules\admin\controllers;
-use yii\web\Controller;
 use app\modules\admin\models\Admin;
 use yii\data\Pagination;
-class ManagerController extends Controller{
+use app\modules\admin\servers\RbacServer;
+class ManagerController extends CommonController {
 
-    public $layout='main';
 
 
     public function actionList(){
@@ -44,5 +43,27 @@ class ManagerController extends Controller{
         $model->deleteAdminById($id);
         $this->redirect(['manager/list']);
         \Yii::$app->end();
+    }
+    protected function checkId(){
+        $id=$this->get('id');
+        $admin=Admin::find()->where(['status'=>1,'id'=>$id])->one();
+        if(empty($admin)){
+            \Yii::$app->session->setFlash('Error','该管理员不存在～');
+            $this->redirect(['manager/list']);
+            \Yii::$app->end();
+        }
+        return $admin;
+    }
+    //分配角色和权限
+    public function actionGrant(){
+        $admin=$this->checkId();
+        if(\Yii::$app->request->isPost){
+            $children=\Yii::$app->request->post('children');
+            RbacServer::grant($admin,$children);
+        }
+        $roles=RbacServer::makeCheckboxValue(\Yii::$app->authManager->getRoles(),null);
+        $permissions=RbacServer::makeCheckboxValue(\Yii::$app->authManager->getPermissions(),null);
+        list($current_roles,$current_permissions)=RbacServer::getGrantInfo($admin);
+        return $this->render('grant',compact('admin','roles','permissions','current_roles','current_permissions'));
     }
 }
