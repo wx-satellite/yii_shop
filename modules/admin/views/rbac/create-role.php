@@ -38,10 +38,7 @@ $this->params['breadcrumbs']=[['label'=>'角色列表','url'=>['/admin/rbac/role
                     <div id="horizontal-form">
                         <?php $form = ActiveForm::begin([
                             'enableClientScript'=>false,
-                            'options'=>['class'=>'form-horizontal','role'=>'form'],
-                            'fieldConfig'=>[
-                                'template'=>'{label}{input}</div>{error}</div>'
-                            ]
+                            'options'=>['class'=>'form-horizontal','role'=>'form']
 
                         ]);?>
                         <div class="form-group">

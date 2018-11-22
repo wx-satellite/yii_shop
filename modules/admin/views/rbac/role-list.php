@@ -58,7 +58,7 @@ $this->params['breadcrumbs']=[['label'=>'角色列表']];
                                     'template'=>'{assign} {update} {delete}',
                                     'buttons'=>[
                                             'assign'=>function($url,$model,$key){
-                                                return Html::a('分配权限',['assignitem','name'=>$model['name']]);
+                                                return Html::a('分配权限',['assign-item','name'=>$model['name']]);
                                             },
                                         'update'=>function($url,$model,$key){
                                             return Html::a('更新',['updateitem','name'=>$model['name']]);
