@@ -1,6 +1,6 @@
 <?php
 
-
+$menu=require __DIR__.'/menu.php';
 return [
 //
 //    'layoutPath'=>'',
@@ -30,7 +30,8 @@ return [
         'USER_STATUS'=>[
             '0'=>'<a href="javascript:void(0);" class="btn btn-yellow">未激活</a>',
             '1'=>'<a href="javascript:void(0);" class="btn btn-palegreen">正常</a>'
-        ]
+        ],
+        'menu'=>$menu
     ],
 
 

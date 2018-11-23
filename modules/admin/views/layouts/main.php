@@ -27,7 +27,7 @@ AdminAsset::register($this);
         <div class="navbar-container">
             <!-- Navbar Barnd -->
             <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
+                <a href="<?php echo \yii\helpers\Url::to(['index/index']);?>" class="navbar-brand">
                     <small>
                         <img src="/img/logo/logo.png" alt="">
                     </small>
@@ -96,147 +96,62 @@ AdminAsset::register($this);
             <!-- Sidebar Menu -->
             <ul class="nav sidebar-menu">
                 <!--Dashboard-->
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-user"></i>
-                        <span class="menu-text">管理员管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
+                <?php $menu=\Yii::$app->getModule('admin')->params['menu'];?>
+                <?php foreach($menu as $m):?>
+                <?php if(\Yii::$app->admin->can($m['controller'].'/*')):?>
                         <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['manager/list']);?>">
-                                    <span class="menu-text">
-                                        管理员列表                                    </span>
+                            <a href="#" class="menu-dropdown">
+                                <i class="menu-icon fa <?php echo $m['icon'];?>"></i>
+                                <span class="menu-text"><?php echo $m['label'];?></span>
                                 <i class="menu-expand"></i>
                             </a>
+                            <ul class="submenu">
+                                <?php foreach($m['children'] as $child):?>
+                                <li>
+                                    <a href="<?php echo \yii\helpers\Url::to([$child['url']]);?>">
+                                    <span class="menu-text">
+                                        <?php echo $child['label'];?>                                    </span>
+                                        <i class="menu-expand"></i>
+                                    </a>
+                                </li>
+                                <?php endforeach;;?>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-th-large"></i>
-                        <span class="menu-text">权限管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['rbac/role-list']);?>">
+                <?php else:?>
+                    <?php
+                        $flag=false;
+                        foreach($m['children'] as $child){
+                            if(\Yii::$app->admin->can($child['url'])){
+                                $flag=true;
+                                break;
+                            }
+                        }
+                    ?>
+                    <?php if($flag):?>
+                            <li>
+                                <a href="#" class="menu-dropdown">
+                                    <i class="menu-icon fa <?php echo $m['icon'];?>"></i>
+                                    <span class="menu-text"><?php echo $m['label'];?></span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                                <ul class="submenu">
+                                    <?php foreach ($m['children'] as $child):?>
+                                    <?php if(\Yii::$app->admin->can($child['url'])):?>
+                                    <li>
+                                        <a href="<?php echo \yii\helpers\Url::to([$child['url']]);?>">
                                     <span class="menu-text">
-                                        角色列表                                    </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                            <a href="<?php echo \yii\helpers\Url::to(['rbac/rule-list']);?>">
-                                    <span class="menu-text">
-                                        规则列表                                    </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                                        <?php echo $child['label'];?>                                    </span>
+                                            <i class="menu-expand"></i>
+                                        </a>
+                                    </li>
+                                    <?php endif;?>
+                                    <?php endforeach;;?>
+                                </ul>
+                            </li>
+                    <?php endif;?>
+                <?php endif;?>
 
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-users"></i>
-                        <span class="menu-text">用户管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['user/list']);?>">
-                                    <span class="menu-text">
-                                        用户列表                                    </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-tags"></i>
-                        <span class="menu-text">分类管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['category/list']);?>">
-                                    <span class="menu-text">
-                                        分类列表                                    </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-shopping-cart"></i>
-                        <span class="menu-text">商品管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['goods/list']);?>">
-                                    <span class="menu-text">
-                                        商品列表                                    </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa  fa-list-alt"></i>
-                        <span class="menu-text">订单管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['order/list']);?>">
-                                    <span class="menu-text">
-                                        订单列表                                   </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa  fa-book"></i>
-                        <span class="menu-text">文章管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['tag/list']);?>">
-                                    <span class="menu-text">
-                                        标签列表                                   </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['article/list']);?>">
-                                    <span class="menu-text">
-                                        文章列表                                   </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa  fa-chain"></i>
-                        <span class="menu-text">链接管理</span>
-                        <i class="menu-expand"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="<?php echo \yii\helpers\Url::to(['link/list']);?>">
-                                    <span class="menu-text">
-                                        友情链接                                   </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <?php endforeach;?>
 
                 <li>
                     <a href="#" class="menu-dropdown">
