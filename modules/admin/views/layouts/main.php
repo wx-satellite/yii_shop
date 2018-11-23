@@ -125,6 +125,11 @@ AdminAsset::register($this);
                                         角色列表                                    </span>
                                 <i class="menu-expand"></i>
                             </a>
+                            <a href="<?php echo \yii\helpers\Url::to(['rbac/rule-list']);?>">
+                                    <span class="menu-text">
+                                        规则列表                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
                         </li>
                     </ul>
                 </li>

@@ -116,4 +116,28 @@ class RbacServer{
     public static function getGrantInfo($admin){
         return [self::getRolesOrPermissionByAid($admin->id,2),self::getRolesOrPermissionByAid($admin->id)];
     }
+
+    //添加规则
+    public static function addRule(){
+        $rule_name=\Yii::$app->request->post('rule_name');
+        $data=\Yii::$app->request->post('data');
+        if(empty($rule_name)){
+            \Yii::$app->session->setFlash('Error','请填写规则类名称～');
+            return false;
+        }
+        $class='app\\modules\\admin\\rules\\'.$rule_name;
+        if(!class_exists($class)){
+            \Yii::$app->session->setFlash('Error','该规则类不存在～');
+            return false;
+        }
+        try{
+            $rule=new $class();
+            \Yii::$app->authManager->add($rule);
+            \Yii::$app->session->setFlash('Success','添加规则成功～');
+            return true;
+        }catch (\Exception $e){
+            \Yii::$app->session->setFlash('Error','添加规则失败～');
+            return false;
+        }
+    }
 }

@@ -18,6 +18,7 @@ class RbacController extends Controller{
             $content=file_get_contents($file);
             preg_match_all('/action(.*?)\(/',$content,$matches);
             foreach ($matches[1] as $match){
+                //方法名：SeekPassword变成了seekpassword，注意执行can和execute时需要将seek-password转成seekpassword
                 $permissions[]=$controller.'/'.strtolower($match);
             }
         }

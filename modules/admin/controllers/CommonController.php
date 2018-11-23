@@ -19,7 +19,8 @@ class CommonController extends Controller{
             return false;
         }
         $controller=$action->controller->id;
-        $action=$action->id;
+        //处理seek-password这种方法
+        $action=implode('',explode('-',$action->id));
         if(\Yii::$app->admin->can($controller.'/*')){
             return true;
         }
@@ -29,7 +30,7 @@ class CommonController extends Controller{
         if(\Yii::$app->request->isAjax){
             echo json_encode(['errorCode'=>1,'msg'=>'对不起，您没有权限访问～']);exit;
         }else{
-            $refer=\Yii::$app->request->referrer;
+            $refer=\yii\helpers\Url::to(['index/index']);
             echo "<script>alert('对不起，您没有权限访问～');window.location.href='{$refer}';</script>";exit;
         }
     }

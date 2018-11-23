@@ -34,7 +34,8 @@ $this->params['breadcrumbs']=[['label'=>'管理员列表']];
                                 <thead class="">
                                 <tr>
                                     <th class="text-center">序号</th>
-                                    <th class="text-center">管理员账号</th>
+                                    <th class="text-center">用户名</th>
+                                    <th class="text-center">登录账号</th>
                                     <th class="text-center">创建时间</th>
                                     <th class="text-center">上次登录IP</th>
                                     <th class="text-center">上次登录时间</th>
@@ -45,6 +46,7 @@ $this->params['breadcrumbs']=[['label'=>'管理员列表']];
                                 <?php foreach($managers as $k=>$manager):?>
                                 <tr>
                                     <td align="center"><?php echo $k+1;?></td>
+                                    <td align="center"><?php echo $manager->username;?></td>
                                     <td align="center"><?php echo $manager->email;?></td>
                                     <td align="center"><?php echo $manager->create_time;?></td>
                                     <td align="center"><?php echo long2ip($manager->loginip);?></td>

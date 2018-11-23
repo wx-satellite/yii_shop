@@ -40,7 +40,7 @@ $this->params['breadcrumbs']=[['label'=>'分类列表']];
                                                 <a href="/admin/user/edit/id/6.html" class="btn btn-primary btn-sm shiny">
                                                     <i class="fa fa-edit"></i> 编辑
                                                 </a>
-                                                <a href="#" onClick="warning('确实要删除吗', '/admin/user/del/id/6.html')" class="btn btn-danger btn-sm shiny">
+                                                <a href="#" onClick="warning('确实要删除吗', '<?php echo \yii\helpers\Url::to(['category/delete','id'=>$v['id']]);?>')" class="btn btn-danger btn-sm shiny">
                                                     <i class="fa fa-trash-o"></i> 删除
                                                 </a>
                                             </td>

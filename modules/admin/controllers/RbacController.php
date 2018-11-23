@@ -93,4 +93,27 @@ class RbacController extends CommonController{
             'data'=>$this->post('data')?:null
         ];
     }
+
+    //规则列表
+    public function actionRuleList(){
+        $query=(new Query())->from(\Yii::$app->authManager->ruleTable)->orderBy(['created_at'=>SORT_DESC]);
+        $data=new ActiveDataProvider([
+            'query'=>$query,
+            'pagination'=>[
+                'pageSize'=>\Yii::$app->getModule('admin')->params['pagesize']
+            ]
+        ]);
+        return $this->render('rule-list',compact('data'));
+    }
+
+    //创建规则
+    public function actionCreateRule(){
+        if(\Yii::$app->request->isPost){
+            if(RbacServer::addRule()){
+                $this->redirect(['rbac/rule-list']);
+                \Yii::$app->end();
+            }
+        }
+        return $this->render('create-rule');
+    }
 }
