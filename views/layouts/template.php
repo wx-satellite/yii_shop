@@ -40,7 +40,7 @@ $this->title='三斤宠物口粮';
             <div class="row">
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-5">
                     <div class="logo pt-39">
-                        <a href="index.html"><img alt="" src="/img/logo/logo.png"></a>
+                        <a href="<?php echo yii\helpers\Url::to(['index/index']);?>"><img alt="" src="/img/logo/logo.png"></a>
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-7 d-none d-lg-block">
@@ -50,7 +50,7 @@ $this->title='三斤宠物口粮';
                                 <li>
                                     <a href="<?php echo yii\helpers\Url::to(['index/index']);?>">首页</a>
                                 </li>
-                                <li class="mega-menu-position"><a href="shop-page.html">口粮分类</a>
+                                <li class="mega-menu-position"><a href="<?php echo \yii\helpers\Url::to(['category/list']);?>">口粮分类</a>
                                     <ul class="mega-menu">
                                         <?php foreach($this->params['cates'] as $k=>$cate):?>
                                         <li>
@@ -69,18 +69,7 @@ $this->title='三斤宠物口粮';
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="blog-leftsidebar.html">博客</a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a href="blog.html">blog page</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-leftsidebar.html">blog left sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details.html">blog details</a>
-                                        </li>
-                                    </ul>
+                                <li><a href="<?php echo \yii\helpers\Url::to(['article/list']);?>">博客</a>
                                 </li>
                                 <li><a href="<?php echo \yii\helpers\Url::to(['page/about-us']);?>">关于我们</a></li>
                                 <li><a href="<?php echo \yii\helpers\Url::to(['page/contact-us']);?>">联系我们</a></li>

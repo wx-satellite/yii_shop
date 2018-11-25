@@ -3,11 +3,12 @@
 namespace app\modules\admin\models;
 use yii\db\ActiveRecord;
 use crazyfd\qiniu\Qiniu;
-
+use yii\data\Pagination;
 class Article extends ActiveRecord{
 
     const SHOW=1;
     const HIDDEN=0;
+    public $cover=null;
     public static  function tableName()
     {
         return "{{%article}}";
@@ -92,5 +93,39 @@ class Article extends ActiveRecord{
             case 4:
                 return ['errno'=>1,'message'=>'上传失败'];
         }
+    }
+
+
+    public static function getArticles($pagesize=6){
+        $where['status']=1;
+        $tag=\Yii::$app->request->get('tag_id','');
+        if($tag){
+            $where['tag_id']=$tag;
+        }
+        $query=self::find()->where($where);
+        $count=$query->count();
+        $pager=new Pagination(['totalCount'=>$count,'pageSize'=>$pagesize]);
+        $articles=$query->limit($pager->limit)->offset($pager->offset)->all();
+        foreach ($articles as $k=>$article){
+            preg_match_all('/src="(.+?)"/',$article->content,$arr);
+            $cover = empty($arr[1])?'暂无封面图':$arr[1][0];
+            $article->cover=$cover;
+            $articles[$k]=$article;
+        }
+        return [$pager,$articles];
+    }
+
+
+    //获取最新的文章
+    public static function getRecentArticles($size=5){
+        $articles = self::find()->where(['status'=>1])->orderBy(['create_time'=>SORT_DESC])->limit($size)->all();
+        $res=[];
+        foreach ($articles as $article){
+            preg_match_all('/src="(.+?)"/',$article->content,$arr);
+            $cover = empty($arr[1])?'暂无封面图':$arr[1][0];
+            $article->cover=$cover;
+            $res[]=$article;
+        }
+        return $res;
     }
 }

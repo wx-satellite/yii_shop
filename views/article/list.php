@@ -2,10 +2,10 @@
 <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(/img/banner/banner-2.jpg);">
     <div class="container">
         <div class="breadcrumb-content text-center">
-            <h2>Blog Left sidebar</h2>
+            <h2>Blog List</h2>
             <ul>
-                <li><a href="index.html">home</a></li>
-                <li class="active">Blog Left sidebar</li>
+                <li><a href="<?php echo \yii\helpers\Url::to(['index/index']);?>">首页</a></li>
+                <li class="active">博客列表页</li>
             </ul>
         </div>
     </div>
@@ -15,253 +15,65 @@
         <div class="row flex-row-reverse">
             <div class="col-lg-9 col-md-8">
                 <div class="row">
+                    <?php if($articles):?>
+                    <?php foreach ($articles as $article):?>
                     <div class="col-lg-6 col-md-12">
                         <div class="blog-wrapper mb-30 gray-bg">
                             <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-4.jpg"></a>
+                                <a href="<?php echo \yii\helpers\Url::to(['article/detail','id'=>$article->id]);?>"><img alt="" src="<?php echo $article->cover;?>"></a>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-meta">
                                     <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
+                                        <li>作者: <span><?php echo $article->author;?></span></li>
+                                        <li><?php echo date('Y-m-d',strtotime($article->create_time));?></li>
                                     </ul>
                                 </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
+                                <h4><a href="<?php echo \yii\helpers\Url::to(['article/detail','id'=>$article->id]);?>"><?php echo $article->title;?></a></h4>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="blog-wrapper mb-30 gray-bg">
-                            <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-5.jpg"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
-                                    </ul>
-                                </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="blog-wrapper mb-30 gray-bg">
-                            <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-6.jpg"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
-                                    </ul>
-                                </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="blog-wrapper mb-30 gray-bg">
-                            <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-7.jpg"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
-                                    </ul>
-                                </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="blog-wrapper mb-30 gray-bg">
-                            <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-8.jpg"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
-                                    </ul>
-                                </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="blog-wrapper mb-30 gray-bg">
-                            <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-9.jpg"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
-                                    </ul>
-                                </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="blog-wrapper mb-30 gray-bg">
-                            <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-10.jpg"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
-                                    </ul>
-                                </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="blog-wrapper mb-30 gray-bg">
-                            <div class="blog-img hover-effect">
-                                <a href="blog-details.html"><img alt="" src="/img/blog/blog-4.jpg"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li>By: <span>Admin</span></li>
-                                        <li>Sep 14, 2018</li>
-                                    </ul>
-                                </div>
-                                <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach;?>
+                    <?php else:?>
+                    <div class="col-lg-6 col-md-12" style="text-align: center;color: red;font-size: 20px;">该标签下暂时没有博客哦～</div>
+                    <?php endif;?>
                 </div>
                 <div class="pagination-style text-center mt-10">
-                    <ul>
-                        <li>
-                            <a href="#"><i class="icon-arrow-left"></i></a>
-                        </li>
-                        <li>
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a class="active" href="#"><i class="icon-arrow-right"></i></a>
-                        </li>
-                    </ul>
+
+                        <?php echo yii\widgets\LinkPager::widget([
+                            'pagination'=>$pager,
+                        ]);?>
+
                 </div>
             </div>
             <div class="col-lg-3 col-md-4">
                 <div class="shop-sidebar blog-mrg">
-                    <div class="shop-widget">
-                        <h4 class="shop-sidebar-title">Search Products</h4>
-                        <div class="shop-search mt-25 mb-50">
-                            <form class="shop-search-form">
-                                <input type="text" placeholder="Find a product">
-                                <button type="submit">
-                                    <i class="icon-magnifier"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
                     <div class="shop-widget mt-50">
-                        <h4 class="shop-sidebar-title">Food Category </h4>
+                        <h4 class="shop-sidebar-title">标签</h4>
                         <div class="shop-list-style mt-20">
                             <ul>
-                                <li><a href="#">Canned Food</a></li>
-                                <li><a href="#">Dry Food</a></li>
-                                <li><a href="#">Food Pouches</a></li>
-                                <li><a href="#">Food Toppers</a></li>
-                                <li><a href="#">Fresh Food</a></li>
-                                <li><a href="#">Frozen Food</a></li>
+                                <?php unset($tags[''])?>
+                                <?php foreach($tags as $k=>$tag):?>
+                                <li><a href="<?php echo \yii\helpers\Url::to(['article/list','tag_id'=>$k]);?>"><?php echo $tag;?> </a></li>
+                                <?php endforeach;?>
                             </ul>
                         </div>
                     </div>
                     <div class="shop-widget mt-50">
-                        <h4 class="shop-sidebar-title">Top Brands </h4>
-                        <div class="shop-list-style mt-20">
-                            <ul>
-                                <li><a href="#">Authority</a></li>
-                                <li><a href="#">AvoDerm Natural</a></li>
-                                <li><a href="#">Bil-Jac</a></li>
-                                <li><a href="#">Blue Buffalo</a></li>
-                                <li><a href="#">Castor & Pollux</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shop-widget mt-50">
-                        <h4 class="shop-sidebar-title">Tags </h4>
-                        <div class="shop-list-style mt-20">
-                            <ul>
-                                <li><a href="#">Food </a></li>
-                                <li><a href="#">Fish </a></li>
-                                <li><a href="#">Dog </a></li>
-                                <li><a href="#">Cat  </a></li>
-                                <li><a href="#">Pet </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shop-widget mt-50">
-                        <h4 class="shop-sidebar-title">Health Consideration </h4>
-                        <div class="shop-list-style mt-20">
-                            <ul>
-                                <li><a href="#">Bone Development <span>18</span></a></li>
-                                <li><a href="#">Digestive Care <span>22</span></a></li>
-                                <li><a href="#">General Health <span>19</span></a></li>
-                                <li><a href="#">Hip & Joint  <span>41</span></a></li>
-                                <li><a href="#">Immune System  <span>22</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shop-widget mt-50">
-                        <h4 class="shop-sidebar-title">Nutritional Option </h4>
-                        <div class="shop-list-style mt-20">
-                            <ul>
-                                <li><a href="#">Grain Free  <span>18</span></a></li>
-                                <li><a href="#">Natural <span>22</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shop-widget mt-50">
-                        <h4 class="shop-sidebar-title">Recent Post</h4>
+                        <h4 class="shop-sidebar-title">最新的博客</h4>
                         <div class="recent-post-wrapper mt-25">
+                            <?php foreach($recent_articles as $k=>$article):?>
+                            <?php if($k>=5) break;?>
                             <div class="single-recent-post mb-20">
                                 <div class="recent-post-img">
-                                    <a href="#"><img src="/img/blog/blog-s1.jpg" alt=""></a>
+                                    <a href="<?php echo \yii\helpers\Url::to(['article/detail','id'=>$article->id]);?>"><img src="<?php echo $article->cover;?>" alt=""></a>
                                 </div>
                                 <div class="recent-post-content">
-                                    <h4><a href="#">My Dog, Aren</a></h4>
-                                    <span>April 19, 2018 </span>
+                                    <h4><a href="<?php echo \yii\helpers\Url::to(['article/detail','id'=>$article->id]);?>"><?php echo $article->title;?></a></h4>
+                                    <span><?php echo $article->create_time;?></span>
                                 </div>
                             </div>
-                            <div class="single-recent-post mb-20">
-                                <div class="recent-post-img">
-                                    <a href="#"><img src="/img/blog/blog-s2.jpg" alt=""></a>
-                                </div>
-                                <div class="recent-post-content">
-                                    <h4><a href="#">My Dog, Tomy</a></h4>
-                                    <span>April 19, 2018 </span>
-                                </div>
-                            </div>
-                            <div class="single-recent-post">
-                                <div class="recent-post-img">
-                                    <a href="#"><img src="/img/blog/blog-s3.jpg" alt=""></a>
-                                </div>
-                                <div class="recent-post-content">
-                                    <h4><a href="#">My Dog, Suju</a></h4>
-                                    <span>April 19, 2018 </span>
-                                </div>
-                            </div>
+                            <?php endforeach;?>
                         </div>
                     </div>
                 </div>

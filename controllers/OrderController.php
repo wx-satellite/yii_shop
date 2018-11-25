@@ -35,7 +35,8 @@ class OrderController extends  BaseController{
     }
     public function actionOrderShow(){
         if(!User::checkUserLoginIn()){
-            $script="<script>alert('请先登录。');window.location.href='/index.php?r=login/login';</script>";
+            $login=\yii\helpers\Url::to(['login/login']);
+            $script="<script>alert('请先登录。');window.location.href='{$login}';</script>";
             echo $script;
             \Yii::$app->end();
         }

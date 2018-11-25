@@ -20,10 +20,4 @@ class IndexController extends BaseController {
         var_dump(\Yii::$app->errorHandler->exception);
     }
 
-    public function actionIndex1(){
-        return 111;
-    }
-    public function actionIndex2(){
-        return 222;
-    }
 }

@@ -3,8 +3,6 @@ use yii\bootstrap\Alert;
 use app\modules\admin\models\Article;
 $this->title='文章列表';
 $this->params['breadcrumbs']=[['label'=>'文章列表']];
-
-
 ?>
 
             <!-- Page Body -->
