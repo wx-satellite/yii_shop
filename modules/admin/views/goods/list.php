@@ -10,7 +10,7 @@ $this->params['breadcrumbs']=[['label'=>'商品列表']];
             <!-- Page Body -->
             <div class="page-body">
 
-                <button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '/index.php?r=admin/goods/add'"> <i class="fa fa-plus"></i> 添加商品
+                <button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo yii\helpers\Url::to(['goods/add']);?>'"> <i class="fa fa-plus"></i> 添加商品
                 </button>
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-xs-12">

@@ -10,7 +10,7 @@ return [
         'pagesize'=>10,
         //七牛云图片样式
         'QN_SMALL'=>'-small',
-        'QN_SMALLER'=>'-samller',
+        'QN_SMALLER'=>'-smaller',
         'QN_MIDDLE'=>'-middle',
         'QN_BIG'=>'-big',
         'QN_BIGGER'=>'-bigger',
