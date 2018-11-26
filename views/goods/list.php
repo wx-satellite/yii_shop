@@ -17,6 +17,7 @@
                 <div class="grid-list-product-wrapper">
                     <div class="product-view product-list">
                         <div class="row">
+                            <?php if($goods):?>
                             <?php foreach($goods as $good):?>
                             <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
                                 <div class="product-wrapper mb-10">
@@ -48,6 +49,9 @@
                                 </div>
                             </div>
                             <?php endforeach;?>
+                            <?php else:?>
+                                <div class="col-lg-6 col-md-12" style="text-align: center;color: red;font-size: 20px;">该分类下暂时没有商品哦～</div>
+                            <?php endif;?>
                         </div>
                         <script>
                             $(function(){
@@ -69,20 +73,11 @@
                             })
                         </script>
                         <div class="pagination-style text-center mt-10">
-                            <ul>
-                                <li>
-                                    <a href="#"><i class="icon-arrow-left"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="#"><i class="icon-arrow-right"></i></a>
-                                </li>
-                            </ul>
+
+                            <?php echo yii\widgets\LinkPager::widget([
+                                'pagination'=>$pager,
+                            ]);?>
+
                         </div>
                     </div>
                 </div>

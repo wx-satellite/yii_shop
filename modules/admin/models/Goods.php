@@ -236,8 +236,13 @@ class Goods extends ActiveRecord{
 
     }
 
-    public static function getGoods($pageSize=9){
-        $query=self::find()->where(['status'=>1])->orderBy(['create_time'=>SORT_DESC]);
+    public static function getGoods($pageSize=8){
+        $where['status']=1;
+        $cid=\Yii::$app->request->get('cid','');
+        if($cid){
+            $where['cateid']=$cid;
+        }
+        $query=self::find()->where($where)->orderBy(['create_time'=>SORT_DESC]);
         $count=$query->count();
         $pager=new \yii\data\Pagination(['totalCount'=>$count,'pageSize'=>$pageSize]);
         $goods=$query->limit($pager->limit)->offset($pager->offset)->all();
