@@ -50,14 +50,14 @@ $this->title='三斤宠物口粮';
                                 <li>
                                     <a href="<?php echo yii\helpers\Url::to(['index/index']);?>">首页</a>
                                 </li>
-                                <li class="mega-menu-position"><a href="<?php echo \yii\helpers\Url::to(['category/list']);?>">口粮分类</a>
+                                <li class="mega-menu-position"><a href="<?php echo \yii\helpers\Url::to(['goods/list']);?>">口粮分类</a>
                                     <ul class="mega-menu">
                                         <?php foreach($this->params['cates'] as $k=>$cate):?>
                                         <li>
                                             <ul>
                                                 <li class="mega-menu-title"><?php echo \Yii::$app->getModule('admin')->params['CATEGORY_TYPE'][$k];?></li>
                                                 <?php foreach($cate as $c):?>
-                                                <li><a href="shop-page.html"><?php echo $c['title'];?></a></li>
+                                                <li><a href="<?php echo \yii\helpers\Url::to(['goods/list','cid'=>$c['id']]);?>"><?php echo $c['title'];?></a></li>
                                                 <?php endforeach;?>
                                             </ul>
                                         </li>

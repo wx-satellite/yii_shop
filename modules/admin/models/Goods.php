@@ -235,4 +235,12 @@ class Goods extends ActiveRecord{
         return $photo;
 
     }
+
+    public static function getGoods($pageSize=9){
+        $query=self::find()->where(['status'=>1])->orderBy(['create_time'=>SORT_DESC]);
+        $count=$query->count();
+        $pager=new \yii\data\Pagination(['totalCount'=>$count,'pageSize'=>$pageSize]);
+        $goods=$query->limit($pager->limit)->offset($pager->offset)->all();
+        return [$pager,$goods];
+    }
 }

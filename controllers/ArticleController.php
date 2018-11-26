@@ -19,7 +19,9 @@ class ArticleController extends BaseController{
         //获取内容中第一张图片作为封面
         preg_match_all('/src="(.+?)"/',$article->content,$arr);
         $cover = empty($arr[1])?'暂无封面图':$arr[1][0];
-        return $this->render('detail',compact('article','cover'));
+        $recent_articles=Article::getRecentArticles();
+        $tags=$tags =Tag::getTags();
+        return $this->render('detail',compact('article','cover','recent_articles','tags'));
     }
 
     protected function checkArticleId(){

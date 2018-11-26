@@ -82,7 +82,7 @@
 <div class="product-area pt-95 pb-70 gray-bg">
     <div class="container">
         <div class="section-title text-center mb-55">
-            <h4>最受欢迎的商品</h4>
+            <h4>最新的商品</h4>
             <h2>Recent Products</h2>
         </div>
         <div class="row">

@@ -20,7 +20,9 @@ class GoodsController extends BaseController{
 
 
     public function actionList(){
-        return $this->render('list');
+        //获取商品
+        list($pager,$goods)=Goods::getGoods();
+        return $this->render('list',compact('pager','goods'));
     }
 
 

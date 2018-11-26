@@ -52,12 +52,12 @@ class CartController extends  BaseController {
                 $sum=0;
                 $url=\yii\helpers\Url::to(['cart/detail']);
                 foreach($carts as $cart){
-                    $html.='<li class="single-shopping-cart"><div class="shopping-cart-img"><a href="#"><img alt="" src="';
+                    $html.='<li class="single-shopping-cart"><div class="shopping-cart-img"><a href="'.\yii\helpers\Url::to(['goods/detail','id'=>$cart['id']]).'"><img alt="" src="';
                     $html.=$cart['picture'].\Yii::$app->getModule('admin')->params['QN_SMALL'];
-                    $html.='"></a></div><div class="shopping-cart-title"><h4><a href="#">'.$cart['name']."</a></h4>";
+                    $html.='"></a></div><div class="shopping-cart-title" style="margin-left: 20px;"><h4><a href="'.\yii\helpers\Url::to(['goods/detail','id'=>$cart['id']]).'">'.$cart['name']."</a></h4>";
                     $html.='<h6>数量:&nbsp;&nbsp;'.$cart['count'].'</h6>';
-                    $html.='<span>RMB:&nbsp;&nbsp;'.sprintf('%.2f',$cart['current_price']).'</span>';
-                    $html.='</div><div class="shopping-cart-delete"><a href="#"><i class="ti-close"></i></a></div></li>';
+                    $html.='<span>单价:&nbsp;&nbsp;'.sprintf('%.2f',$cart['current_price']).'&nbsp;RMB</span>';
+                    $html.='</div></li>';
                     $count+=$cart['count'];
                     $sum+=$cart['current_price']*$cart['count'];
                 }
