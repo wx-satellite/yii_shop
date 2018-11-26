@@ -94,17 +94,9 @@
                         <a href="<?php echo \yii\helpers\Url::to(['goods/detail','id'=>$good['id']]);?>">
                             <img src="<?php echo $good['picture'].\Yii::$app->getModule('admin')->params['QN_MIDDLE'];?>" alt="">
                         </a>
-                        <div class="product-action">
-                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
-                                <i class="ti-plus"></i>
-                            </a>
-                            <a title="Add To Cart" href="#">
+                        <div class="product-action" data-id="<?php echo $good['id'];?>">
+                            <a title="添加到购物车" href="javascript:void(0);" >
                                 <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
-                        <div class="product-action-wishlist">
-                            <a title="Wishlist" href="#">
-                                <i class="ti-heart"></i>
                             </a>
                         </div>
                     </div>
@@ -124,8 +116,28 @@
             <?php endforeach;?>
             <?php endif;?>
         </div>
+
     </div>
 </div>
+<script>
+    $(function(){
+        CART_URL = "<?php echo \yii\helpers\Url::to(['cart/add']);?>";
+        _csrf="<?php echo \Yii::$app->request->csrfToken;?>"
+        $('.product-action').click(function(){
+            goods_id=$(this).attr('data-id');
+            $.post(CART_URL,{'Cart[goods_id]':goods_id,'Cart[count]':1,'_csrf':_csrf},function(res){
+                if(res['success']){
+                    $count = parseInt($('#cart-count').text());
+                    $count+=parseInt(res['count']);
+                    $('#cart-count').text($count);
+                    alert(res['message']);
+                }else{
+                    alert(res['message']);
+                }
+            },'json');
+        });
+    })
+</script>
 <div class="deal-area bg-img pt-95 pb-100">
     <div class="container">
         <div class="section-title text-center mb-50">
@@ -189,57 +201,27 @@
     <div class="container">
         <div class="section-title text-center mb-60">
             <h4>Latest News</h4>
-            <h2>博客文章</h2>
+            <h2>最新文章</h2>
         </div>
         <div class="row">
+            <?php foreach($articles as $article):?>
             <div class="col-lg-4 col-md-6">
                 <div class="blog-wrapper mb-30 gray-bg">
                     <div class="blog-img hover-effect">
-                        <a href="blog-details.html"><img alt="" src="/img/blog/blog-1.jpg"></a>
+                        <a href="<?php echo \yii\helpers\Url::to(['article/detail','id'=>$article->id]);?>"><img alt="" src="<?php echo $article->cover;?>"></a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <ul>
-                                <li>By: <span>Admin</span></li>
-                                <li>Sep 14, 2018</li>
+                                <li>作者: <span><?php echo $article->author;?></span></li>
+                                <li><?php echo date('Y-m-d',strtotime($article->create_time));?></li>
                             </ul>
                         </div>
-                        <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
+                        <h4><a href="<?php echo \yii\helpers\Url::to(['article/detail','id'=>$article->id]);?>"><?php echo $article->title;?></a></h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-wrapper mb-30 gray-bg">
-                    <div class="blog-img hover-effect">
-                        <a href="blog-details.html"><img alt="" src="/img/blog/blog-2.jpg"></a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <ul>
-                                <li>By: <span>Admin</span></li>
-                                <li>Sep 14, 2018</li>
-                            </ul>
-                        </div>
-                        <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-wrapper mb-30 gray-bg">
-                    <div class="blog-img hover-effect">
-                        <a href="blog-details.html"><img alt="" src="/img/blog/blog-3.jpg"></a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <ul>
-                                <li>By: <span>Admin</span></li>
-                                <li>Sep 14, 2018</li>
-                            </ul>
-                        </div>
-                        <h4><a href="blog-details.html">Lorem ipsum dolor amet cons adipisicing elit</a></h4>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach;?>
         </div>
     </div>
 </div>
