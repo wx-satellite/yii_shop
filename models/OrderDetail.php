@@ -2,10 +2,9 @@
 
 
 namespace app\models;
-use yii\db\ActiveRecord;
 
 
-class OrderDetail extends ActiveRecord{
+class OrderDetail extends Base{
 
     public static function tableName(){
         return "{{%order_detail}}";

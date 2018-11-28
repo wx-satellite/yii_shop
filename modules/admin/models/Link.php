@@ -1,9 +1,7 @@
 <?php
 
 namespace app\modules\admin\models;
-
-use yii\db\ActiveRecord;
-class Link extends ActiveRecord{
+class Link extends Base{
 
 
     public static function tableName()

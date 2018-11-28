@@ -1,10 +1,9 @@
 <?php
 
 namespace app\modules\admin\models;
-use yii\db\ActiveRecord;
 
 
-class Tag extends ActiveRecord{
+class Tag extends Base{
     const SHOW=1;
     const HIDDEN=0;
     public static function tableName()

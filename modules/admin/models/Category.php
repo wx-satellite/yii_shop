@@ -1,10 +1,9 @@
 <?php
 
 namespace app\modules\admin\models;
-use yii\db\ActiveRecord;
 
 
-class Category extends ActiveRecord{
+class Category extends Base{
 
 
     const TOP_CATEGORY=0;

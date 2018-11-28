@@ -1,9 +1,8 @@
 <?php
 
 namespace app\models;
-use yii\db\ActiveRecord;
 use app\modules\admin\models\Goods;
-class Order extends ActiveRecord{
+class Order extends Base{
     const NOT_PAY=0; //订单生成时的默认状态
     const NOT_POST=1;   //订单支付完成但还未发货
     const POST=2; //订单已经发货

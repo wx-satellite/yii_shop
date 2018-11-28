@@ -77,7 +77,7 @@
                                     });
                                     $('#removeAll').click(function(){
                                         if(confirm('确认清空购物车吗？')) {
-                                            $.post(REOMVE_URL + '&flag=all', {
+                                            $.post(REOMVE_URL, {
                                                 flag: 'all',
                                                 _csrf: _csrf
                                             }, function (res) {

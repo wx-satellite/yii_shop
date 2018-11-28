@@ -1,9 +1,8 @@
 <?php
 namespace app\modules\admin\models;
-use yii\db\ActiveRecord;
 use crazyfd\qiniu\Qiniu;
 
-class Goods extends ActiveRecord{
+class Goods extends Base{
 
     const IS_ON_SALE=1;
     const IS_NOT_ON_SALE=0;

@@ -1,7 +1,7 @@
 <?php
 
 
-$url="http://blog.w.labyun.com.cn/index.php?r=pay/notify";
+$url="http://119.23.70.61:8080/pay/notify.html";
 
 $post = $_POST;
 $ch=curl_init();

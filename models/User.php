@@ -2,9 +2,8 @@
 
 
 namespace app\models;
-use yii\db\ActiveRecord;
 
-class User extends ActiveRecord implements \yii\web\IdentityInterface{
+class User extends Base implements \yii\web\IdentityInterface{
     public $remember_me;
     public $repassword;
     public $account;

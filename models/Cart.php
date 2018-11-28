@@ -2,10 +2,9 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
 use app\modules\admin\models\Goods;
 
-class Cart extends  ActiveRecord{
+class Cart extends  Base{
 
 
     public function rules()

@@ -1,10 +1,9 @@
 <?php
 
 namespace app\modules\admin\models;
-use yii\db\ActiveRecord;
 use crazyfd\qiniu\Qiniu;
 use yii\data\Pagination;
-class Article extends ActiveRecord{
+class Article extends Base{
 
     const SHOW=1;
     const HIDDEN=0;

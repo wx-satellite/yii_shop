@@ -3,9 +3,8 @@
 
 namespace app\modules\admin\models;
 
-use yii\db\ActiveRecord;
 
-class Admin extends ActiveRecord implements \yii\web\IdentityInterface{
+class Admin extends Base implements \yii\web\IdentityInterface{
 
     public static function findIdentity($id)
     {

@@ -1,10 +1,9 @@
 <?php
 
 namespace app\models;
-use yii\db\ActiveRecord;
 
 
-class UserProfile extends ActiveRecord{
+class UserProfile extends Base{
 
     public static function tableName(){
         return "{{%user_profile}}";
