@@ -248,7 +248,7 @@ $this->title='三斤宠物口粮';
                         <div class="footer-content">
                             <ul>
                                 <?php foreach($this->params['links'] as $link):?>
-                                <li><a href="<?php echo $link->links;?>"><?php echo $link->title;?></a></li>
+                                <li><a href="<?php echo $link['links'];?>"><?php echo $link['title'];?></a></li>
                                 <?php endforeach;?>
                             </ul>
                         </div>

@@ -89,7 +89,7 @@ class Category extends Base{
             ->all();
         $res=[];
         foreach ($cates as $k=>$cate){
-            $res[$cate['type']][]=$cate;
+            $res[$cate['type']][]=$cate->toArray();
         }
         return $res;
     }

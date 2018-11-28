@@ -17,6 +17,7 @@ class BaseController extends Controller{
     {
         $category = new Category();
         if(!$cates=\Yii::$app->cache->get('cates')){
+
             $cates = $category->getCategorys();
             \Yii::$app->cache->set('cates',$cates,\Yii::$app->params['redis_cache_expire']);
         }
@@ -42,6 +43,11 @@ class BaseController extends Controller{
     public function getLinks(){
         if(!$links=\Yii::$app->cache->get('links')){
             $links = Link::find()->where(['status'=>1])->orderBy(['create_time'=>SORT_DESC])->all();
+            $res=[];
+            foreach ($links as $link){
+                $res[]=$link->toArray();
+            }
+            $links=$res;
             \Yii::$app->cache->set('links',$links,\Yii::$app->params['redis_cache_expire']);
         }
         $this->view->params['links']=$links;

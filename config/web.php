@@ -64,7 +64,7 @@ $config = [
             'redis'=>[
                 'hostname' => '119.23.70.61',
                 'port' => 6379,
-                'database' => 2,
+                'database' => 1,
             ]
         ],
         'admin'=>[
