@@ -8,8 +8,8 @@ use yii\bootstrap\Alert;
         <div class="breadcrumb-content text-center">
             <h2>Login / Register</h2>
             <ul>
-                <li><a href="index.html">home</a></li>
-                <li class="active">Login / Register</li>
+                <li><a href="<?php echo \yii\helpers\Url::to(['index/index']);?>">首页</a></li>
+                <li class="active">登录 / 注册</li>
             </ul>
         </div>
     </div>

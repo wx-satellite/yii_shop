@@ -5,8 +5,7 @@ use app\modules\admin\models\Category;
 
 class CategoryController extends CommonController {
 
-    public $layout='main';
-
+    public $mustLogin=['list','add'];
     public function actionList(){
         $model = new Category();
         $cates = $model->getTree('all');

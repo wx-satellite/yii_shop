@@ -6,7 +6,7 @@ use app\modules\admin\models\Article;
 use yii\data\Pagination;
 class ArticleController extends CommonController{
 
-    public $layout='main';
+    public $mustLogin=['list','add','edit','upload'];
 
     public function actionList(){
         $query=Article::find()->where('status!=:status',[':status'=>-1])->orderBy(['create_time'=>SORT_DESC]);

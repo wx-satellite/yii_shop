@@ -3,7 +3,9 @@
 namespace app\modules\admin\controllers;
 use app\modules\admin\models\Admin;
 use Yii;
-class PasswordController extends CommonController {
+use yii\web\Controller;
+
+class PasswordController extends Controller {
 
     public $layout=false;
 

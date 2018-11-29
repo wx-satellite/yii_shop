@@ -4,9 +4,8 @@ namespace app\modules\admin\controllers;
 use yii\data\Pagination;
 use app\models\Order;
 class OrderController extends CommonController {
-    public $layout='main';
 
-
+    public $mustLogin=['list','detail','post'];
     //订单列表
     public function actionList(){
         //取出所有的订单，包括删除的

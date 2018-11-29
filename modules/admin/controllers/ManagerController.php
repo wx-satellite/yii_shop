@@ -6,7 +6,7 @@ use yii\data\Pagination;
 use app\modules\admin\servers\RbacServer;
 class ManagerController extends CommonController {
 
-
+    public $mustLogin=['list','add','delete','grant'];
 
     public function actionList(){
         $query = Admin::find()->orderBy(['create_time'=>SORT_ASC])->where(['status'=>1]);

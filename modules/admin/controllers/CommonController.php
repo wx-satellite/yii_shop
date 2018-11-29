@@ -9,6 +9,8 @@ class CommonController extends Controller{
 
     public $layout='main';
 
+    //必须登录的控制器列表
+    public $mustLogin=[];
 
     //检测当前用户是否有访问权限
     public function beforeAction($action)
@@ -33,6 +35,25 @@ class CommonController extends Controller{
             $refer=\yii\helpers\Url::to(['index/index']);
             echo "<script>alert('对不起，您没有权限访问～');window.location.href='{$refer}';</script>";exit;
         }
+    }
+
+    //必须登录才能访问（行为方法的执行必须调用父类的beforeAction）
+    public function behaviors()
+    {
+        return [
+            'access'=>[
+                'class'=>\yii\filters\AccessControl::className(),
+                'only'=>$this->mustLogin,
+                'user'=>'admin',
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'actions'=>$this->mustLogin,
+                        'roles'=>['@']
+                    ]
+                ]
+            ]
+        ];
     }
 
     //判断传入的id是否合法

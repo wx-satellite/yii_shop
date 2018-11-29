@@ -6,7 +6,7 @@ use app\modules\admin\models\Tag;
 use yii\data\Pagination;
 class TagController extends CommonController{
 
-
+    public $mustLogin=['list','add','edit'];
 
 
     public function actionList(){

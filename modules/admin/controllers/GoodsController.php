@@ -6,8 +6,7 @@ use app\modules\admin\models\Category;
 use yii\data\Pagination;
 class GoodsController extends CommonController {
 
-    public $layout='main';
-
+    public $mustLogin=['list','add','change-status','delete','edit','delete-phone'];
 
 
     //商品列表

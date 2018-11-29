@@ -6,6 +6,8 @@ use app\modules\admin\models\Link;
 use yii\data\Pagination;
 class LinkController extends CommonController{
 
+    public $mustLogin=['list','add','edit'];
+
     public function actionList(){
         $query=Link::find()->where('status!=:status',[':status'=>-1])->orderBy(['create_time'=>SORT_DESC]);
         $count=$query->count();

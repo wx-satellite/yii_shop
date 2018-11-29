@@ -9,7 +9,7 @@ use yii\data\ActiveDataProvider;
 use app\modules\admin\servers\RbacServer;
 //角色和权限都是存储在auth_item表中，通过type的值来区分，type=1表示角色，type为2表示权限
 class RbacController extends CommonController{
-
+    public $mustLogin=['role-list','create-role','rule-list','create-rule','assign-item'];
     //角色列表
     public function actionRoleList(){
         $auth=\Yii::$app->authManager;

@@ -6,6 +6,7 @@ use app\models\User;
 use yii\data\Pagination;
 class UserController extends CommonController{
 
+    public $mustLogin=['list'];
     public function actionList(){
         $query=User::find()->orderBy(['create_time'=>SORT_DESC]);
         $count=$query->count();
